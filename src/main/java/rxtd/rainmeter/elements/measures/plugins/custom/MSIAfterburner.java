@@ -5,7 +5,9 @@ import rxtd.rainmeter.elements.measures.plugins.PluginResource;
 import rxtd.rainmeter.elements.measures.plugins.VirtualPluginResource;
 
 /**
- * Plugin documentation: https://forums.guru3d.com/threads/rainmeter-plugin-for-msi-afterburner.319558/page-2#post-3806691
+ * A plug-in that allows you to put MSI Afterburner hardware monitoring information into the Rainmeter.
+ *
+ * @see <a href="https://forums.guru3d.com/threads/rainmeter-plugin-for-msi-afterburner.319558/page-2#post-3806691">Documentation in original post on forum</a>
  */
 public class MSIAfterburner extends PluginBase<MSIAfterburner> {
     private final static PluginResource PLUGIN = new VirtualPluginResource("MSIAfterburner", null);

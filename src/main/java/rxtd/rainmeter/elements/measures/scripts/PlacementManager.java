@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Script is designed to be used with PerfmonPDH plugin.
- * It may not work with other plugins/measures.
+ * Specialized script. It is designed to be used with PerfmonPDH/PerfmonRXTD plugin and may not work with other plugins/measures.
  */
 public class PlacementManager extends ScriptBase<PlacementManager> {
     private final static Resource SCRIPT = new ResourceFactory().jarScript("/rxtd/rainmeter/scripts/positionManager/PositionManager.lua", "PositionManager", true);
