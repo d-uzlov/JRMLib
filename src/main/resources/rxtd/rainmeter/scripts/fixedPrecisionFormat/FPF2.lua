@@ -4,17 +4,22 @@ local nInitScale = 1
 local nDivisorReverse = 0
 local bUseUpdate = false
 local nDefaultPrecision = 4
+local bGreedy = true
 
 local metricSuffixes = { "", "k", "M", "G", "T", "P", "E", "Z", "Y" }
 
-function Initialize()
+local function readSuffixes()
     local sSuffix1 = SELF:GetOption('Suffix1', ' ')
     local sPostfix = SELF:GetOption('Postfix', '')
     local array = SELF:GetOption('Suffixes')
     if (array ~= '') then
         local tmp = loadstring('return ' .. array);
-        if (tmp ~= nil and type(tmp) ~= 'table') then
+        if (tmp ~= nil) then
             tSuffixes = tmp()
+            if (type(tSuffixes) ~= 'table') then
+                tSuffixes = metricSuffixes
+                SKIN:Bang('!Log', 'Suffixes are incorrect, falling to default', 'Error')
+            end
         else
             tSuffixes = metricSuffixes
             SKIN:Bang('!Log', 'Suffixes are incorrect, falling to default', 'Warning')
@@ -30,6 +35,15 @@ function Initialize()
     for i = 1, tSuffixes[0] do
         tSuffixes[i] = sSuffix1 .. tSuffixes[i] .. sPostfix
     end
+end
+
+function Initialize()
+    debug.setmetatable(true, { __len = function(value)
+        return value == true and 1 or value == false and 0
+    end })
+
+    readSuffixes()
+
     nDivisor = SELF:GetNumberOption('Divisor', nDivisor)
     if (nDivisor <= 1) then
         nDivisor = 1024
@@ -37,8 +51,9 @@ function Initialize()
     nInitScale = SELF:GetNumberOption('InitScale', nInitScale)
     nDivisorReverse = 1.0 / nDivisor
 
-    bUseUpdate = SELF:GetNumberOption('UseUpdate', bUseUpdate) ~= 0
+    bUseUpdate = SELF:GetNumberOption('UseUpdate', #bUseUpdate) ~= 0
     nDefaultPrecision = SELF:GetNumberOption('DefaultPrecision', nDefaultPrecision)
+    bGreedy = SELF:GetNumberOption('Greedy', #bGreedy) ~= 0
     return
 end
 
@@ -61,7 +76,7 @@ function FormatNumber(sInputValue, sPrecision)
     nValue = nValue * nInitScale
     local nAbsValue = math.abs(nValue)
 
-    local nPrecision = math.floor(tonumber(sPrecision)) or 3
+    local nPrecision = math.floor(tonumber(sPrecision)) or nDefaultPrecision
     if nPrecision <= 0 then
         nPrecision = 3
     end
@@ -70,7 +85,7 @@ function FormatNumber(sInputValue, sPrecision)
     for i = 1, nPrecision do
         nBarrierValue = nBarrierValue * 10
     end
-    if (nBarrierValue > nDivisor) then
+    if (bGreedy and nBarrierValue > nDivisor) then
         nBarrierValue = nDivisor
     end
 

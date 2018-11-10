@@ -1,6 +1,6 @@
 local tValues = {}
-local nHistWidth
-local nHistWidthInverted
+local nHistWidth = 0
+local nHistWidthInverted = 0
 
 local nCurrentIndex
 local nMaxIndex
@@ -80,7 +80,7 @@ local function unlockLinkedGroup()
 end
 
 function Initialize()
-    nHistWidth = SELF:GetNumberOption('HistWidth')
+    nHistWidth = SELF:GetNumberOption('HistWidth', nHistWidth)
     if (nHistWidth <= 1) then
         SKIN:Bang('!Log', 'HistWidth=' .. SELF:GetOption('HistWidth') .. ' is not valid. Aborting', 'Error')
         bBroken = true
@@ -89,7 +89,7 @@ function Initialize()
     nCurrentIndex = nHistWidth
     nHistWidthInverted = 1 / nHistWidth
 
-    bNeedRainlikeScale = (SELF:GetNumberOption('UseRainlikeScale') == 1)
+    bNeedRainlikeScale = (SELF:GetNumberOption('UseRainlikeScale', 0) ~= 0)
 
     if (bNeedRainlikeScale) then
         nRainlikeStart = SELF:GetNumberOption('RainlikeScaleStart', 2)

@@ -102,7 +102,7 @@ function Initialize()
         return
     end
 
-    nMaxErrorCount = SELF:GetNumberOption('MaxErrorCount', 4)
+    nMaxErrorCount = SELF:GetNumberOption('MaxErrorCount', nMaxErrorCount)
     if (nMaxErrorCount <= 0) then
         SKIN:Bang('!Log', 'MaxErrorCount=' .. SELF:GetOption('MaxErrorCount') .. ' is not valid. Falling to default 4', 'Warning')
         nMaxErrorCount = 4

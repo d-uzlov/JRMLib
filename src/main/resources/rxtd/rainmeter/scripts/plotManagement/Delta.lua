@@ -46,7 +46,7 @@ end
 
 --- Sets all saved values to current value and reset all variables to their initial values.
 function Reset()
-    nHistWidth = SELF:GetNumberOption('HistWidth', -1)
+    nHistWidth = SELF:GetNumberOption('HistWidth', nHistWidth)
     if (nHistWidth <= 0) then
         SKIN:Bang('!Log', 'HistWidth=' .. SELF:GetOption('HistWidth').. ' is not valid. Aborting', 'Error')
         bBroken = true
