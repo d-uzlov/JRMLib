@@ -2,7 +2,6 @@ package rxtd.rainmeter.elements.measures.scripts;
 
 import rxtd.Pair;
 import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 import rxtd.rainmeter.formulas.Formula;
 import rxtd.rainmeter.resources.Resource;
 import rxtd.rainmeter.resources.ResourceFactory;
@@ -55,34 +54,34 @@ public class IpResolveManager extends ScriptBase<IpResolveManager> {
      * Change current source.
      */
     public Action bangNext() {
-        return BangUtils.commandMeasure(this.getName(), "Next()", null);
+        return  this.bangCallFunction("Next");
     }
 
     /**
      * Add an error to this source.
      */
     public Action bangError() {
-        return BangUtils.commandMeasure(this.getName(), "Error()", null);
+        return  this.bangCallFunction("Error");
     }
 
     /**
      * Remove an error from this source.
      */
     public Action bangSuccess() {
-        return BangUtils.commandMeasure(this.getName(), "Success()", null);
+        return  this.bangCallFunction("Success");
     }
 
     /**
      * Get value1 from current source.
      */
     public Formula formulaUrl() {
-        return this.inline("GetUrl", (String[]) null);
+        return this.inline("GetUrl");
     }
 
     /**
      * Get value2 from current source.
      */
     public Formula formulaRegExp() {
-        return this.inline("GetRegExp", (String[]) null);
+        return this.inline("GetRegExp");
     }
 }

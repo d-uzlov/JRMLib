@@ -66,12 +66,12 @@ public class NowPlaying extends MeasureBase<NowPlaying> {
         return this.createChild(null);
     }
 
-    public Action bang(ZeroArgumentBang bang) {
-        return BangUtils.commandMeasure(this.getName(), bang.toString(), null);
+    public Action bangCommand(ZeroArgumentBang bang) {
+        return super.bangCommand(bang.toString());
     }
 
-    public Action bang(OneArgumentBang bang, int arg) {
-        return BangUtils.commandMeasure(this.getName(), bang.toString() + " " + arg, null);
+    public Action bangCommand(OneArgumentBang bang, int arg) {
+        return super.bangCommand(bang.toString() + " " + arg);
     }
 
     public enum ZeroArgumentBang {

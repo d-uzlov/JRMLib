@@ -2,7 +2,6 @@ package rxtd.rainmeter.elements.measures.scripts;
 
 import rxtd.Pair;
 import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 import rxtd.rainmeter.elements.Element;
 import rxtd.rainmeter.elements.measures.Measure;
 import rxtd.rainmeter.elements.meters.Meter;
@@ -47,10 +46,10 @@ public class PlacementManager extends ScriptBase<PlacementManager> {
             throw new RuntimeException("nothing to flash");
         }
         if (this.measureElements != this.managedElements) {
-            throw new RuntimeException("measures and meters has different number of elements");
+            throw new RuntimeException("measures and meters have different number of elements");
         }
         if (this.managed.size() != this.positions.size()) {
-            throw new RuntimeException("meters and positions has different number of elements");
+            throw new RuntimeException("meters and positions have different number of elements");
         }
     }
 
@@ -105,7 +104,7 @@ public class PlacementManager extends ScriptBase<PlacementManager> {
         int count = measures.get(0).values.size();
         for (var v : measures) {
             if (count != v.values.size()) {
-                throw new RuntimeException("Not all measure groups has the same count of elements");
+                throw new RuntimeException("Not all measure groups have the same count of elements");
             }
         }
         this.measureElements = count;
@@ -121,7 +120,7 @@ public class PlacementManager extends ScriptBase<PlacementManager> {
         int count = groups.get(0).meterOptions.size();
         for (var v : groups) {
             if (count != v.meterOptions.size()) {
-                throw new RuntimeException("Not all managed groups has the same count of elements");
+                throw new RuntimeException("Not all managed groups have the same count of elements");
             }
         }
         this.managedElements = count;
@@ -135,7 +134,7 @@ public class PlacementManager extends ScriptBase<PlacementManager> {
     }
 
     public Action bangReset() {
-        return BangUtils.commandMeasure(this.getName(), "reset()", null);
+        return this.bangCallFunction("Reset");
     }
 
     public static class MeasureGroup {

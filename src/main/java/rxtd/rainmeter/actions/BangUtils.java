@@ -28,14 +28,14 @@ public class BangUtils {
         if (value == null) {
             return null;
         }
-        return "\"\"\"" + value.getName() + "\"\"\"";
+        return value.getName();
     }
 
     private static String escape(Variable value) {
         if (value == null) {
             return null;
         }
-        return "\"\"\"" + value.getName() + "\"\"\"";
+        return value.getName();
     }
 
     private static String escape(Formula value) {

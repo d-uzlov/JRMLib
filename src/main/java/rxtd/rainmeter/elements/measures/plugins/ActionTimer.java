@@ -67,7 +67,7 @@ public class ActionTimer extends PluginBase<ActionTimer> {
             i = this.actionLists.size();
             this.actionLists.add(list);
         }
-        return BangUtils.commandMeasure(this.getName(), "Execute " + (i + 1), null);
+        return super.bangCommand("Execute " + (i + 1));
     }
 
     public Action bangStop(ActionList list) {
@@ -76,7 +76,7 @@ public class ActionTimer extends PluginBase<ActionTimer> {
             i = this.actionLists.size();
             this.actionLists.add(list);
         }
-        return BangUtils.commandMeasure(this.getName(), "Stop " + (i + 1), null);
+        return super.bangCommand("Stop " + (i + 1));
     }
 
     public interface ActionListElement {

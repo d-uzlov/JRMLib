@@ -213,11 +213,11 @@ public class WebParser extends MeasureBase<WebParser> {
     }
 
     public Action bangUpdate() {
-        return BangUtils.commandMeasure(this.getName(), "Update", null);
+        return super.bangCommand("Update");
     }
 
     public Action bangReset() {
-        return BangUtils.commandMeasure(this.getName(), "Reset", null);
+        return super.bangCommand("Reset");
     }
 
     public enum DecodeCharacterReference {

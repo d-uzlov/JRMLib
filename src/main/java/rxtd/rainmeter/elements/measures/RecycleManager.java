@@ -22,8 +22,8 @@ public class RecycleManager extends MeasureBase<RecycleManager> {
         return getThis();
     }
 
-    public Action createCommand(Command command) {
-        return BangUtils.commandMeasure(this.getName(), command.toString(), null);
+    public Action bangCommand(Command command) {
+        return super.bangCommand(command.toString());
     }
 
 

@@ -1,7 +1,6 @@
 package rxtd.rainmeter.elements.measures.scripts;
 
 import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 import rxtd.rainmeter.formulas.Formula;
 import rxtd.rainmeter.resources.Resource;
 import rxtd.rainmeter.resources.ResourceFactory;
@@ -41,6 +40,6 @@ public class HistoDelta extends ScriptBase<HistoDelta> {
      * Call it before first update if you are using measure values in CurValue
      */
     public Action bangReset() {
-        return BangUtils.commandMeasure(this.getName(), "Reset()", null);
+        return this.bangCallFunction("Reset");
     }
 }

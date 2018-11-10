@@ -4,6 +4,7 @@ import rxtd.rainmeter.NamePrefixProvider;
 import rxtd.rainmeter.SkinUtils;
 import rxtd.rainmeter.actions.Action;
 import rxtd.rainmeter.actions.ActionChain;
+import rxtd.rainmeter.actions.BangUtils;
 import rxtd.rainmeter.elements.MeterMeasureBase;
 import rxtd.rainmeter.formulas.BooleanFormula;
 import rxtd.rainmeter.formulas.Formula;
@@ -42,6 +43,14 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
     private static String createName(String name) {
         NamePrefixProvider prefixProvider = SkinUtils.getNamePrefixProvider();
         return prefixProvider.nextMeasuresPrefix(name);
+    }
+
+    /**
+     * @param arg Arguments for CommandMeasure bang. This is a solid string because there are no common rules for args format.
+     * @return bang that executes given command.
+     */
+    protected Action bangCommand(String arg) {
+        return BangUtils.commandMeasure(this.getName(), arg, null);
     }
 
     public T setUpdateAction(Action action) {

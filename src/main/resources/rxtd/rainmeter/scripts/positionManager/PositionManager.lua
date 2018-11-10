@@ -22,7 +22,7 @@ local tMap = {}
 --- int: currently used for generating indices for tMeters
 local nMapIndex = 1
 
-function reset()
+function Reset()
     bNeedUpdate = true
 end
 

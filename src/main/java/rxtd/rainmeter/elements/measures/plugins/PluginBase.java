@@ -1,6 +1,10 @@
 package rxtd.rainmeter.elements.measures.plugins;
 
+import org.jetbrains.annotations.Nullable;
+import rxtd.rainmeter.actions.Action;
+import rxtd.rainmeter.actions.BangUtils;
 import rxtd.rainmeter.elements.measures.MeasureBase;
+import rxtd.rainmeter.formulas.Formula;
 import rxtd.rainmeter.variables.Variables;
 
 import java.util.function.Supplier;
@@ -41,7 +45,7 @@ public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T>
      */
     public T wrap(String pluginPath) {
         if (this.sectionVariablesExist) {
-            throw new RuntimeException("wrapping can't be performed after bang creation");
+            throw new RuntimeException("wrapping can't be changed after bang creation");
         }
         if (pluginPath == null) {
             this.localPluginPath = null;
@@ -83,5 +87,22 @@ public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T>
      */
     protected void setSectionVariablesExist() {
         this.sectionVariablesExist = true;
+    }
+
+    /**
+     * @param function name of the internal plugin function
+     * @param args     list of args for function. May be {@code null} if none needed.
+     * @return inline formula that calls specified function with specified args.
+     */
+    protected Formula inline(String function, @Nullable String... args) {
+        if (this.wrappedPlugin != null) {
+
+        }
+        StringBuilder value = new StringBuilder("[&" + this.getName() + ":" + function + "(");
+        if (args != null) {
+            value.append(String.join(",", args));
+        }
+        value.append(")]");
+        return new Formula(value.toString());
     }
 }

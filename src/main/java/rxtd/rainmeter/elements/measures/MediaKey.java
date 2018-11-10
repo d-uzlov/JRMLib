@@ -17,8 +17,8 @@ public class MediaKey extends MeasureBase<MediaKey> {
         return this;
     }
 
-    public Action createCommand(Command command) {
-        return BangUtils.commandMeasure(this.getName(), command.toString(), null);
+    public Action bangCommand(Command command) {
+        return super.bangCommand(command.toString());
     }
 
     public enum Command {

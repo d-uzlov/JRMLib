@@ -158,23 +158,23 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
     }
 
     public Action bangStop() {
-        return BangUtils.commandMeasure(this.getName(), "Stop", null);
+        return super.bangCommand("Stop");
     }
 
     public Action bangResume() {
-        return BangUtils.commandMeasure(this.getName(), "Resume", null);
+        return super.bangCommand("Resume");
     }
 
     public Action bangStopResume() {
-        return BangUtils.commandMeasure(this.getName(), "StopResume", null);
+        return super.bangCommand("StopResume");
     }
 
     public Action bangSetIndexOffset(int value) {
-        return BangUtils.commandMeasure(this.getName(), "SetIndexOffset " + value, null);
+        return super.bangCommand("SetIndexOffset " + value);
     }
 
     public Action bangSetIndexOffset(String value) {
-        return BangUtils.commandMeasure(this.getName(), "SetIndexOffset " + value, null);
+        return super.bangCommand("SetIndexOffset " + value);
     }
 
     public Child createChild(String name) {
