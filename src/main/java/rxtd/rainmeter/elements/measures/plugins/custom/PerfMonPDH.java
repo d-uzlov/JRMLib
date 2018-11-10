@@ -30,7 +30,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
 
     public PerfMonPDH setCategory(String category) {
         this.manageParameter("ObjectName", category);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonPDH setCounterList(String... counters) {
@@ -42,22 +42,22 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
             throw new IllegalArgumentException("maximum 30 values");
         }
         this.manageParameter("CounterList", counters);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonPDH setSortBy(SortBy sortType) {
         this.manageParameter("SortBy", sortType);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonPDH setSortCounterIndex(Integer index) {
         this.manageParameter("SortCounterIndex", index);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonPDH setSortOrder(SortOrder category) {
         this.manageParameter("SortOrder", category);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonPDH setBlacklist(String... values) {
@@ -69,7 +69,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
             throw new IllegalArgumentException("maximum 30 values");
         }
         this.manageParameter("Blacklist", values);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonPDH setWhitelist(String... values) {
@@ -81,27 +81,27 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
             throw new IllegalArgumentException("maximum 30 values");
         }
         this.manageParameter("Whitelist", values);
-        return getThis();
+        return this.getThis();
     }
 
-    public PerfMonPDH setInstanceIndexOffet(Integer value) {
-        this.manageParameter("InstanceIndexOffet", value);
-        return getThis();
+    public PerfMonPDH setInstanceIndexOffset(Integer value) {
+        this.manageParameter("InstanceIndexOffset", value);
+        return this.getThis();
     }
 
     public PerfMonPDH setNameFormat(NameFormat value) {
         this.manageParameter("NameFormat", value);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonPDH setRollup(Boolean value) {
         this.manageParameter("Rollup", value);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonPDH setSortRollupFunction(RollupFunction value) {
         this.manageParameter("SortRollupFunction", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Child createChild(String name) {
@@ -122,7 +122,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -138,7 +138,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -157,7 +157,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -177,7 +177,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -198,7 +198,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -217,7 +217,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -239,32 +239,32 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
 
         public Child setType(ChildType type) {
             this.manageParameter("Type", type);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setCounterIndex(Integer value) {
             this.manageParameter("CounterIndex", value);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setInstanceName(String name) {
             this.manageParameter("InstanceName", name);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setInstanceIndex(Integer value) {
             this.manageParameter("InstanceIndex", value);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setResultString(ResultString type) {
             this.manageParameter("ResultString", type);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setRollupFunction(RollupFunction function) {
             this.manageParameter("RollupFunction", function);
-            return getThis();
+            return this.getThis();
         }
 
         @Override

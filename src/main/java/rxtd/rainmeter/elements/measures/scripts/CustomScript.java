@@ -19,43 +19,43 @@ public class CustomScript extends ScriptBase<CustomScript> implements CustomElem
     @Override
     public CustomScript setOption(String name, String value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomScript setOption(String name, Integer value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomScript setOption(String name, Boolean value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomScript setOption(String name, Double value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomScript setOption(String name, Resource value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomScript setOption(String name, Formula value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomScript setOption(String name, Action value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override

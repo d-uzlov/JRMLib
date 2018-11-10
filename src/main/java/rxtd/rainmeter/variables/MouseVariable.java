@@ -4,35 +4,29 @@ public class MouseVariable implements Variable {
     private final String name;
     private final String usage;
     private final String escaped;
-    private final String initialValue;
 
-    MouseVariable(String name, String initialValue) {
+    MouseVariable(String name) {
         if (name == null) {
             throw new IllegalArgumentException();
         }
         this.name = name;
         this.usage = "[$" + this.name + "]";
-        this.initialValue = initialValue;
         this.escaped = "[$*" + this.name + "*]";
-    }
-
-    MouseVariable(String name) {
-        this(name, null);
     }
 
     @Override
     public String getUsage() {
-        return usage;
+        return this.usage;
     }
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public String getInitialValue() {
-        return initialValue;
+        throw new UnsupportedOperationException();
     }
 
     @Override

@@ -99,7 +99,7 @@ public class PlacementManager extends ScriptBase<PlacementManager> {
     public PlacementManager setMeasures(List<MeasureGroup> measures) {
         if (measures == null || measures.isEmpty()) {
             this.measures = null;
-            return getThis();
+            return this.getThis();
         }
         int count = measures.get(0).values.size();
         for (var v : measures) {
@@ -109,13 +109,13 @@ public class PlacementManager extends ScriptBase<PlacementManager> {
         }
         this.measureElements = count;
         this.measures = measures;
-        return getThis();
+        return this.getThis();
     }
 
     public PlacementManager setMeters(List<ManagedGroup> groups) {
         if (groups == null || groups.isEmpty()) {
             this.managed = null;
-            return getThis();
+            return this.getThis();
         }
         int count = groups.get(0).meterOptions.size();
         for (var v : groups) {
@@ -125,12 +125,12 @@ public class PlacementManager extends ScriptBase<PlacementManager> {
         }
         this.managedElements = count;
         this.managed = groups;
-        return getThis();
+        return this.getThis();
     }
 
     public PlacementManager setPositions(List<Pair<Integer, Integer>> positions) {
         this.positions = positions;
-        return getThis();
+        return this.getThis();
     }
 
     public Action bangReset() {

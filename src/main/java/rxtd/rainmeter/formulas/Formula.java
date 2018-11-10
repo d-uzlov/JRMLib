@@ -263,7 +263,7 @@ public class Formula {
         }
 
         public String getValue() {
-            return value;
+            return this.value;
         }
     }
 
@@ -282,7 +282,7 @@ public class Formula {
         }
 
         public String getValue() {
-            return value;
+            return this.value;
         }
     }
 

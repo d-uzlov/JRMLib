@@ -1,7 +1,6 @@
 package rxtd.rainmeter.elements.measures;
 
 import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 import rxtd.rainmeter.formulas.Formula;
 
 public class NowPlaying extends MeasureBase<NowPlaying> {
@@ -24,7 +23,7 @@ public class NowPlaying extends MeasureBase<NowPlaying> {
      */
     public NowPlaying setPlayerName(String playerName) {
         this.manageParameter("PlayerName", playerName);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -33,27 +32,27 @@ public class NowPlaying extends MeasureBase<NowPlaying> {
      */
     public NowPlaying setPlayerName(KnownPlayer player) {
         this.manageParameter("PlayerName", player);
-        return getThis();
+        return this.getThis();
     }
 
     public NowPlaying setType(Type type) {
         this.manageParameter("Type", type);
-        return getThis();
+        return this.getThis();
     }
 
     public NowPlaying setPlayerPath(String path) {
         this.manageParameter("PlayerPath", path);
-        return getThis();
+        return this.getThis();
     }
 
     public NowPlaying setTrackChangeAction(Action action) {
         this.manageParameter("TrackChangeAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public NowPlaying setDisableLeadingZeroes(Boolean value) {
         this.manageParameter("DisableLeadingZeroes", value);
-        return getThis();
+        return this.getThis();
     }
 
     public NowPlaying createChild(String name) {

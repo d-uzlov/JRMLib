@@ -2,7 +2,6 @@ package rxtd.rainmeter.elements.measures;
 
 import rxtd.rainmeter.actions.Action;
 import rxtd.rainmeter.actions.ActionChain;
-import rxtd.rainmeter.actions.BangUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,82 +39,82 @@ public class WebParser extends MeasureBase<WebParser> {
 
     public WebParser setURL(String url) {
         this.manageParameter("URL", url);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setRegExp(String regexp) {
         this.manageParameter("RegExp", regexp);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setStringIndex(Integer value) {
         this.manageParameter("StringIndex", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setStringIndex2(Integer value) {
         this.manageParameter("StringIndex2", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setUpdateRate(Integer value) {
         this.manageParameter("UpdateRate", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setDecodeCharacterReference(DecodeCharacterReference value) {
         this.manageParameter("DecodeCharacterReference", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setDebug(Boolean value) {
         this.manageParameter("Debug", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setDebug2File(String name) {
         this.manageParameter("Debug2File", name);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setDownload(Boolean value) {
         this.manageParameter("Download", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setDownloadFile(String path) {
         this.manageParameter("DownloadFile", path);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setErrorString(String value) {
         this.manageParameter("ErrorString", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setLogSubstringErrors(Boolean value) {
         this.manageParameter("LogSubstringErrors", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setForceReload(Boolean value) {
         this.manageParameter("ForceReload", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setCodePage(String value) {
         this.manageParameter("CodePage", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setProxyServer(String value) {
         this.manageParameter("ProxyServer", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setUserAgent(String value) {
         this.manageParameter("Debug", value);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setHeaders(Header... headers) {
@@ -126,7 +125,7 @@ public class WebParser extends MeasureBase<WebParser> {
         this.headers.clear();
         this.headers.addAll(headers);
         this.generateHeaders();
-        return getThis();
+        return this.getThis();
     }
 
     private void generateHeaders() {
@@ -149,13 +148,13 @@ public class WebParser extends MeasureBase<WebParser> {
         }
         this.headers.add(header);
         this.generateHeaders();
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setFinishAction(Action action) {
         this.finishAction = new ActionChain(action);
         this.manageParameter("FinishAction", this.finishAction);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser addFinishAction(Action action) {
@@ -164,13 +163,13 @@ public class WebParser extends MeasureBase<WebParser> {
         }
         this.finishAction.append(action);
         this.manageParameter("FinishAction", this.finishAction);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setOnConnectErrorAction(Action action) {
         this.onConnectErrorAction = new ActionChain(action);
         this.manageParameter("OnConnectErrorAction", this.onConnectErrorAction);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser addOnConnectErrorAction(Action action) {
@@ -179,13 +178,13 @@ public class WebParser extends MeasureBase<WebParser> {
         }
         this.onConnectErrorAction.append(action);
         this.manageParameter("OnConnectErrorAction", this.onConnectErrorAction);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setOnRegExpErrorAction(Action action) {
         this.onRegExpErrorAction = new ActionChain(action);
         this.manageParameter("OnRegExpErrorAction", this.onRegExpErrorAction);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser addOnRegExpErrorAction(Action action) {
@@ -194,13 +193,13 @@ public class WebParser extends MeasureBase<WebParser> {
         }
         this.onRegExpErrorAction.append(action);
         this.manageParameter("OnRegExpErrorAction", this.onRegExpErrorAction);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser setOnDownloadErrorAction(Action action) {
         this.onDownloadErrorAction = new ActionChain(action);
         this.manageParameter("OnDownloadErrorAction", this.onDownloadErrorAction);
-        return getThis();
+        return this.getThis();
     }
 
     public WebParser addOnDownloadErrorAction(Action action) {
@@ -209,7 +208,7 @@ public class WebParser extends MeasureBase<WebParser> {
         }
         this.onDownloadErrorAction.append(action);
         this.manageParameter("OnDownloadErrorAction", this.onDownloadErrorAction);
-        return getThis();
+        return this.getThis();
     }
 
     public Action bangUpdate() {

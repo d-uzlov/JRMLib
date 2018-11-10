@@ -1,7 +1,6 @@
 package rxtd.rainmeter.elements.measures.plugins.custom;
 
 import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 import rxtd.rainmeter.elements.measures.plugins.ExternalPluginResource;
 import rxtd.rainmeter.elements.measures.plugins.PluginBase;
 import rxtd.rainmeter.elements.measures.plugins.PluginResource;
@@ -32,7 +31,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
     public PerfMonRXTD setCategory(String category) {
         this.manageParameter("ObjectName", category);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setCounterList(String... counters) {
@@ -44,7 +43,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
             throw new IllegalArgumentException("maximum 30 values");
         }
         this.manageParameter("CounterList", counters);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setExpressionList(String... expressions) {
@@ -53,7 +52,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
     public PerfMonRXTD setExpressionList(List<String> expression) {
         this.manageParameter("ExpressionList", expression);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setRollupExpressionList(String... expressions) {
@@ -62,27 +61,27 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
     public PerfMonRXTD setRollupExpressionList(List<String> expression) {
         this.manageParameter("RollupExpressionList", expression);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setSortBy(SortBy sortType) {
         this.manageParameter("SortBy", sortType);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setSyncRawFormatted(Boolean value) {
         this.manageParameter("SyncRawFormatted", value);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setSortIndex(Integer index) {
         this.manageParameter("SortIndex", index);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setSortOrder(SortOrder category) {
         this.manageParameter("SortOrder", category);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setBlacklist(String... values) {
@@ -91,7 +90,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
     public PerfMonRXTD setBlacklist(Collection<String> values) {
         this.manageParameter("Blacklist", values);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setWhitelist(String... values) {
@@ -100,7 +99,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
     public PerfMonRXTD setWhitelist(Collection<String> values) {
         this.manageParameter("Whitelist", values);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setBlacklistOrig(String... values) {
@@ -109,7 +108,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
     public PerfMonRXTD setBlacklistOrig(Collection<String> values) {
         this.manageParameter("BlacklistOrig", values);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setWhitelistOrig(String... values) {
@@ -118,37 +117,37 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
     public PerfMonRXTD setWhitelistOrig(Collection<String> values) {
         this.manageParameter("WhitelistOrig", values);
-        return getThis();
+        return this.getThis();
     }
 
-    public PerfMonRXTD setInstanceIndexOffet(Integer value) {
+    public PerfMonRXTD setInstanceIndexOffset(Integer value) {
         this.manageParameter("InstanceIndexOffset", value);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setLimitIndexOffset(Boolean value) {
         this.manageParameter("LimitIndexOffset", value);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setDisplayName(DisplayName value) {
         this.manageParameter("DisplayName", value);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setRollup(Boolean value) {
         this.manageParameter("Rollup", value);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setKeepDiscarded(Boolean value) {
         this.manageParameter("KeepDiscarded", value);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMonRXTD setSortRollupFunction(RollupFunction value) {
         this.manageParameter("SortRollupFunction", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -198,7 +197,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -214,7 +213,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -233,7 +232,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -252,7 +251,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -271,7 +270,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -289,7 +288,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -311,42 +310,42 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
 
         public Child setType(ChildType type) {
             this.manageParameter("Type", type);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setCounterIndex(Integer value) {
             this.manageParameter("CounterIndex", value);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setInstanceName(String name) {
             this.manageParameter("InstanceName", name);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setInstanceIndex(Integer value) {
             this.manageParameter("InstanceIndex", value);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setResultString(ResultString type) {
             this.manageParameter("ResultString", type);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setSearchOriginalName(Boolean value) {
             this.manageParameter("SearchOriginalName", value);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setDiscarded(Boolean value) {
             this.manageParameter("Discarded", value);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setTotal(Boolean value) {
             this.manageParameter("Total", value);
-            return getThis();
+            return this.getThis();
         }
 
         public Child setRollupFunction(RollupFunction function) {
@@ -354,7 +353,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
                 throw new IllegalArgumentException();
             }
             this.manageParameter("RollupFunction", function);
-            return getThis();
+            return this.getThis();
         }
 
         @Override

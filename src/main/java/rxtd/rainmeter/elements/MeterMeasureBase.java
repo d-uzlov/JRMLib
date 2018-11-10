@@ -19,7 +19,7 @@ public abstract class MeterMeasureBase<T extends MeterMeasureBase<T>> extends El
 
     public T setUpdateDivider(Integer divider) {
         this.manageParameter("UpdateDivider", divider);
-        return getThis();
+        return this.getThis();
     }
 
     public T disableUpdate() {
@@ -28,7 +28,7 @@ public abstract class MeterMeasureBase<T extends MeterMeasureBase<T>> extends El
 
     public T setDynamicVariables(Boolean value) {
         this.manageParameter("DynamicVariables", value);
-        return getThis();
+        return this.getThis();
     }
 
     public T setGroups(String... groups) {
@@ -38,15 +38,15 @@ public abstract class MeterMeasureBase<T extends MeterMeasureBase<T>> extends El
     public T setGroups(Collection<String> groups) {
         if (groups == null) {
             this.groups.clear();
-            return getThis();
+            return this.getThis();
         }
         this.groups = groups;
-        return getThis();
+        return this.getThis();
     }
 
     public T addGroup(String group) {
         this.groups.add(group);
-        return getThis();
+        return this.getThis();
     }
 
     public T addGroups(String... groups) {
@@ -55,7 +55,7 @@ public abstract class MeterMeasureBase<T extends MeterMeasureBase<T>> extends El
 
     public T addGroups(Collection<String> groups) {
         this.groups.addAll(groups);
-        return getThis();
+        return this.getThis();
     }
 
 }

@@ -9,13 +9,13 @@ import java.util.Map;
 
 public abstract class ShapeElementBase implements ShapeElement<ShapeElementBase> {
     private final Map<Class, Modifier> modifiers = new HashMap<>();
+    private final List<Runnable> listeners = new ArrayList<>();
     private String name;
     private String typeImage;
-    private List<Runnable> listeners = new ArrayList<>();
 
     @Override
     public Map<Class, Modifier> getModifiers() {
-        return modifiers;
+        return this.modifiers;
     }
 
     protected void setImage(String name, String typeImage) {

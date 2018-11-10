@@ -27,27 +27,27 @@ public class MSIAfterburner extends PluginBase<MSIAfterburner> {
 
     public MSIAfterburner setDataSource(String value) {
         this.manageParameter("DataSource", value);
-        return getThis();
+        return this.getThis();
     }
 
     public MSIAfterburner setGpuNumber(Integer value) {
         this.manageParameter("GPU", value);
-        return getThis();
+        return this.getThis();
     }
 
     public MSIAfterburner setSource(Source source) {
         this.manageParameter("SourceId", source.getId());
-        return getThis();
+        return this.getThis();
     }
 
     public MSIAfterburner setSource(Integer value) {
         this.manageParameter("SourceId", value);
-        return getThis();
+        return this.getThis();
     }
 
     public MSIAfterburner setGpuDescriptor(String value) {
         this.manageParameter("GpuDescriptor", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**

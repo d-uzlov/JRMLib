@@ -81,17 +81,17 @@ public class UniqueNamePrefixProvider implements NamePrefixProvider {
 
     @Override
     public String nextVariablesPrefix(String suggest) {
-        return next(this.variablePrefixName, this.variablesUID, suggest);
+        return this.next(this.variablePrefixName, this.variablesUID, suggest);
     }
 
     @Override
     public String nextMeasuresPrefix(String suggest) {
-        return next(this.measurePrefixName, this.measuresUID, suggest);
+        return this.next(this.measurePrefixName, this.measuresUID, suggest);
     }
 
     @Override
     public String nextMetersPrefix(String suggest) {
-        return next(this.meterPrefixName, this.metersUID, suggest);
+        return this.next(this.meterPrefixName, this.metersUID, suggest);
     }
 
     @Override

@@ -18,11 +18,11 @@ public class MString extends MeasureBase<MString> {
 
     public MString setString(String string) {
         this.manageParameter("String", string);
-        return getThis();
+        return this.getThis();
     }
 
     public MString setString(Formula formula) {
         this.manageParameter("String", formula);
-        return getThis();
+        return this.getThis();
     }
 }

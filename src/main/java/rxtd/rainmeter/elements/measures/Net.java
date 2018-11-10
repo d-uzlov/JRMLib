@@ -16,27 +16,27 @@ public class Net extends MeasureBase<Net> {
 
     public Net useBestInterface() {
         this.manageParameter("Interface", "Best");
-        return getThis();
+        return this.getThis();
     }
 
     public Net setInterface(Integer index) {
         this.manageParameter("Interface", index);
-        return getThis();
+        return this.getThis();
     }
 
-    public Net setInterfase(String name) {
+    public Net setInterface(String name) {
         this.manageParameter("Interface", name);
-        return getThis();
+        return this.getThis();
     }
 
     public Net setCumulative(Boolean value) {
         this.manageParameter("Cumulative", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Net setUseBits(Boolean value) {
         this.manageParameter("UseBits", value);
-        return getThis();
+        return this.getThis();
     }
 
 
@@ -52,7 +52,7 @@ public class Net extends MeasureBase<Net> {
         }
 
         public String getValue() {
-            return value;
+            return this.value;
         }
     }
 }

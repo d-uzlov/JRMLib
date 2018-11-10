@@ -1,7 +1,7 @@
 package rxtd.rainmeter.actions;
 
 public class ActionChain implements Action {
-    private StringBuilder value = new StringBuilder();
+    private final StringBuilder value = new StringBuilder();
 
     public ActionChain(Action... actions) {
         for (var action : actions) {

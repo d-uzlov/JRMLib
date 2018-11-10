@@ -18,17 +18,17 @@ public class SysInfo extends PluginBase<SysInfo> {
 
     public SysInfo setSysInfoType(InfoType value) {
         this.manageParameter("SysInfoType", value);
-        return getThis();
+        return this.getThis();
     }
 
     public SysInfo setSysInfoData(Integer value) {
         this.manageParameter("SysInfoData", value);
-        return getThis();
+        return this.getThis();
     }
 
     public SysInfo setSysInfoData(String value) {
         this.manageParameter("SysInfoData", value);
-        return getThis();
+        return this.getThis();
     }
 
     public enum InfoType {

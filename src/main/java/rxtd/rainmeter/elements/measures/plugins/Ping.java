@@ -20,26 +20,26 @@ public class Ping extends PluginBase<Ping> {
 
     public Ping setDestAddress(String value) {
         this.manageParameter("DestAddress", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Ping setUpdateRate(Integer value) {
         this.manageParameter("UpdateRate", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Ping setTimeout(Integer value) {
         this.manageParameter("Timeout", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Ping setTimeoutValue(Integer value) {
         this.manageParameter("TimeoutValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Ping setFinishAction(Action value) {
         this.manageParameter("FinishAction", value);
-        return getThis();
+        return this.getThis();
     }
 }

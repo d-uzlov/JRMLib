@@ -5,11 +5,11 @@ public abstract class PathElementBase implements PathElement {
     private String params;
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getParams() {
-        return params;
+        return this.params;
     }
 
     protected void setImage(String name, String params) {

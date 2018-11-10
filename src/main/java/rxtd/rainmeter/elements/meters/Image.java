@@ -19,27 +19,27 @@ public class Image extends GeneralImage<Image> {
 
     public Image setImageName(TextBuilder builder) {
         this.setTextBuilder("ImageName", builder);
-        return getThis();
+        return this.getThis();
     }
 
     public Image setImageName(String name) {
         this.manageParameter("ImageName", name);
-        return getThis();
+        return this.getThis();
     }
 
     public Image setPreserveAspectRatio(AspectRationMode mode) {
         this.manageParameter("PreserveAspectRatio", mode);
-        return getThis();
+        return this.getThis();
     }
 
     public Image setScaleMargins(Padding margins) {
         this.manageParameter("ScaleMargins", margins);
-        return getThis();
+        return this.getThis();
     }
 
     public Image setTile(Boolean value) {
         this.manageParameter("Tile", value);
-        return getThis();
+        return this.getThis();
     }
 
     public enum AspectRationMode {
@@ -55,7 +55,7 @@ public class Image extends GeneralImage<Image> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 }

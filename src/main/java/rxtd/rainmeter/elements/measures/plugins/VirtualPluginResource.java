@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.resources.ResourceOptions;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -27,8 +26,8 @@ public class VirtualPluginResource implements PluginResource {
     @Override
     public String toString() {
         return "Plugin{virtual," +
-                "file='" + pluginName + '\'' +
-                (version != null ? ", version='" + version + '\'' : "") +
+                "file='" + this.pluginName + '\'' +
+                (this.version != null ? ", version='" + this.version + '\'' : "") +
                 '}';
     }
 
@@ -58,21 +57,21 @@ public class VirtualPluginResource implements PluginResource {
     }
 
     @Override
-    public void patch(Path configResources, Path suiteResources, @NotNull ResourceOptions options) throws IOException {
+    public void patch(Path configResources, Path suiteResources, @NotNull ResourceOptions options) {
 
     }
 
     @Override
     final public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         VirtualPluginResource that = (VirtualPluginResource) o;
-        return Objects.equals(pluginName, that.pluginName) &&
-                Objects.equals(type, that.type);
+        return Objects.equals(this.pluginName, that.pluginName) &&
+                Objects.equals(this.type, that.type);
     }
 
     @Override
     final public int hashCode() {
-        return Objects.hash(pluginName, type);
+        return Objects.hash(this.pluginName, this.type);
     }
 }

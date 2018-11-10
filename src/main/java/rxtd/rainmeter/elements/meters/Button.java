@@ -19,12 +19,12 @@ public class Button extends GeneralImage<Button> {
 
     public Button setButtonImage(Resource image) {
         this.manageParameter("BitmapImage", image);
-        return getThis();
+        return this.getThis();
     }
 
     public Button setButtonCommand(Action action) {
         this.manageParameter("ButtonCommand", action);
-        return getThis();
+        return this.getThis();
     }
 
     @Override

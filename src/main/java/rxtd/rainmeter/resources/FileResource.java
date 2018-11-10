@@ -22,18 +22,18 @@ public class FileResource implements Resource {
     private final String usage;
     private final Path type;
     private final boolean isShared;
-    private final StreamProcesser streamProcesser;
+    private final StreamProcessor streamProcessor;
 
     /**
      * @param path            will be used for resource name in file system
      * @param usage           if not null, specifies usage in rainmeter
      * @param type            human readable description of resource
      * @param isShared        determines whether resource should be in config folder of in resource folder.
-     * @param streamProcesser Object that should handle writing into open OutputStream.
+     * @param streamProcessor Object that should handle writing into open OutputStream.
      */
-    public FileResource(String path, @Nullable String usage, @Nullable Path type, boolean isShared, @NotNull StreamProcesser streamProcesser) {
+    public FileResource(String path, @Nullable String usage, @Nullable Path type, boolean isShared, @NotNull FileResource.StreamProcessor streamProcessor) {
         this.path = Paths.get(path);
-        this.streamProcesser = streamProcesser;
+        this.streamProcessor = streamProcessor;
         this.usage = usage != null ? usage : isShared ? Variables.Skin.RESOURCES_FOLDER.getUsage() + path : path;
         this.type = type;
         this.isShared = isShared;
@@ -65,9 +65,9 @@ public class FileResource implements Resource {
     @Override
     public String toString() {
         return "File{" +
-                "path=" + path +
-                ", usage='" + usage + '\'' +
-                ", isShared=" + isShared +
+                "path=" + this.path +
+                ", usage='" + this.usage + '\'' +
+                ", isShared=" + this.isShared +
                 '}';
     }
 
@@ -82,7 +82,7 @@ public class FileResource implements Resource {
         }
 
         OutputStream stream = new BufferedOutputStream(Files.newOutputStream(path));
-        this.streamProcesser.write(stream);
+        this.streamProcessor.write(stream);
         stream.close();
     }
 
@@ -94,7 +94,7 @@ public class FileResource implements Resource {
     @Override
     final public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         FileResource that = (FileResource) o;
         return this.isShared == that.isShared &&
                 Objects.equals(this.path, that.path) &&
@@ -107,7 +107,7 @@ public class FileResource implements Resource {
         return Objects.hash(this.path, this.usage, this.type, this.isShared);
     }
 
-    public interface StreamProcesser {
+    public interface StreamProcessor {
         void write(OutputStream stream) throws IOException;
     }
 }

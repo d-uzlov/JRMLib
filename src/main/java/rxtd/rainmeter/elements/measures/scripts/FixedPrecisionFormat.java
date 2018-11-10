@@ -26,34 +26,34 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
 
     /**
      * @param divisor Value that is used for division to determine order.
-     * <br/>
-     * Default {@code 1024}.
+     *                <br/>
+     *                Default {@code 1024}.
      */
     public FixedPrecisionFormat setDivisor(Integer divisor) {
         this.manageParameter("Divisor", divisor);
-        return getThis();
+        return this.getThis();
     }
 
     /**
      * @param divisor Value that is used for division to determine order.
-     * <br/>
-     * Default {@code 1024}.
+     *                <br/>
+     *                Default {@code 1024}.
      */
     public FixedPrecisionFormat setDivisor(Double divisor) {
         this.manageParameter("Divisor", divisor);
-        return getThis();
+        return this.getThis();
     }
 
     /**
      * @param value If {@code true} script reads {@code Formula} option on update, format it and use as a return value.
-     * <br/>
-     * Default {@code false}.
+     *              <br/>
+     *              Default {@code false}.
      * @see #setFormula
      * @see #setDefaultPrecision
      */
     public FixedPrecisionFormat setUseUpdate(Boolean value) {
         this.manageParameter("UseUpdate", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -63,7 +63,7 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
      */
     public FixedPrecisionFormat setFormula(String value) {
         this.manageParameter("Formula", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -75,11 +75,11 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
      */
     public FixedPrecisionFormat setDefaultPrecision(Integer value) {
         this.manageParameter("DefaultPrecision", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
-     * If {@code true} then value will have the biggest suffiz possible for this value and this precision. Else - the smallest.
+     * If {@code true} then value will have the biggest suffix possible for this value and this precision. Else - the smallest.
      * <br/>
      * For example, {@code 1 000 000} can be formatted as {@code 1.000M} (greedy) or {@code 1000k} (not greedy).
      * <br/>
@@ -87,7 +87,7 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
      */
     public FixedPrecisionFormat setGreedy(Boolean value) {
         this.manageParameter("Greedy", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -97,7 +97,7 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
      */
     public FixedPrecisionFormat setInitScale(Double divisor) {
         this.manageParameter("InitScale", divisor);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -107,7 +107,7 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
      */
     public FixedPrecisionFormat setBeforeSuffix(String suffix) {
         this.manageParameter("Suffix1", "\"" + suffix + "\"");
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -117,7 +117,7 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
      */
     public FixedPrecisionFormat setSuffixes(String... suffixes) {
         this.setSuffixes(Arrays.asList(suffixes));
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -127,7 +127,7 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
      */
     public FixedPrecisionFormat setSuffixes(Collection<String> suffixes) {
         this.manageParameter("Suffixes", makeLuaTableInitializer(suffixes, true));
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -137,12 +137,13 @@ public class FixedPrecisionFormat extends ScriptBase<FixedPrecisionFormat> {
      */
     public FixedPrecisionFormat setPostfix(String postfix) {
         this.manageParameter("Postfix", "\"" + postfix + "\"");
-        return getThis();
+        return this.getThis();
     }
 
     /**
      * Inline Lua that formats given number.
-     * @param input something that should be converted to a number
+     *
+     * @param input     something that should be converted to a number
      * @param precision number of decimals
      */
     public Formula formulaFormatNumber(Formula input, int precision) {

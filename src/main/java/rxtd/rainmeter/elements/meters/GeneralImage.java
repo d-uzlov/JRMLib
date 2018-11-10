@@ -47,54 +47,54 @@ public abstract class GeneralImage<T extends GeneralImage<T>> extends MeterBase<
 
     public T setImage(Resource image) {
         this.manageParameter("ImagePath", image);
-        return getThis();
+        return this.getThis();
     }
 
     public T setImageCrop(Crop crop) {
         this.manageParameter("ImageCrop", generateImageCrop(crop));
-        return getThis();
+        return this.getThis();
     }
 
     public T setGreyscale(Boolean value) {
         this.manageParameter("Greyscale", value);
-        return getThis();
+        return this.getThis();
     }
 
     public T setImageTint(Color tint) {
         this.manageParameter("ImageTint", tint);
-        return getThis();
+        return this.getThis();
     }
 
     public T setImageAlpha(Integer alpha) {
         this.manageParameter("ImageAlpha", alpha);
-        return getThis();
+        return this.getThis();
     }
 
     public T setImageFlip(ImageFlip flip) {
         this.manageParameter("ImageFlip", flip);
-        return getThis();
+        return this.getThis();
     }
 
     public T setImageRotate(Double angle) {
         this.manageParameter("ImageRotate", angle);
-        return getThis();
+        return this.getThis();
     }
 
     public T setUseExifOrientation(Boolean value) {
         this.manageParameter("UseExifOrientation", value);
-        return getThis();
+        return this.getThis();
     }
 
     public T setColorMatrix(double[][] matrix) {
         setColorMatrix("ColorMatrix", this, matrix);
-        return getThis();
+        return this.getThis();
     }
 
     public enum CropOrigin {
         TOP_LEFT("1"),
         TOP_RIGHT("2"),
         BOTTOM_LEFT("3"),
-        BOTTON_RIGHT("4"),
+        BOTTOM_RIGHT("4"),
         CENTER("5");
 
         private final String value;
@@ -105,7 +105,7 @@ public abstract class GeneralImage<T extends GeneralImage<T>> extends MeterBase<
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -123,7 +123,7 @@ public abstract class GeneralImage<T extends GeneralImage<T>> extends MeterBase<
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 

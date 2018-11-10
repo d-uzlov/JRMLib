@@ -1,7 +1,6 @@
 package rxtd.rainmeter.elements.measures;
 
 import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 
 public class MediaKey extends MeasureBase<MediaKey> {
     public MediaKey(String name) {

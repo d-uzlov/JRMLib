@@ -1,7 +1,6 @@
 package rxtd.rainmeter.elements.measures;
 
 import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 
 public class RecycleManager extends MeasureBase<RecycleManager> {
     public RecycleManager(String name) {
@@ -19,7 +18,7 @@ public class RecycleManager extends MeasureBase<RecycleManager> {
 
     public RecycleManager setRecycleType(Type type) {
         this.manageParameter("Interface", type);
-        return getThis();
+        return this.getThis();
     }
 
     public Action bangCommand(Command command) {

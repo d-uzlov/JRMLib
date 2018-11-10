@@ -27,7 +27,7 @@ public class Histogram extends MeterBase<Histogram> {
      */
     public Histogram setMeasure(Measure measure) {
         this.manageParameter("MeasureName", measure);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -38,7 +38,7 @@ public class Histogram extends MeterBase<Histogram> {
      */
     public Histogram setMeasure2(Measure measure) {
         this.manageParameter("MeasureName2", measure);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -50,7 +50,7 @@ public class Histogram extends MeterBase<Histogram> {
      */
     public Histogram setAutoscale(Boolean autoscale) {
         this.manageParameter("Autoscale", autoscale);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -62,7 +62,7 @@ public class Histogram extends MeterBase<Histogram> {
      */
     public Histogram setGraphStart(StartPlace start) {
         this.manageParameter("GraphStart", start);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -74,7 +74,7 @@ public class Histogram extends MeterBase<Histogram> {
      */
     public Histogram setGraphOrientation(Orientation orientation) {
         this.manageParameter("GraphOrientation", orientation);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -86,7 +86,7 @@ public class Histogram extends MeterBase<Histogram> {
      */
     public Histogram setFlip(Boolean value) {
         this.manageParameter("Flip", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -99,7 +99,7 @@ public class Histogram extends MeterBase<Histogram> {
     public Histogram setColor(Color color) {
         this.removeParameter("BothColor");
         this.manageParameter("PrimaryColor", color);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -114,63 +114,63 @@ public class Histogram extends MeterBase<Histogram> {
         this.manageParameter("PrimaryColor", primary);
         this.manageParameter("SecondaryColor", secondary);
         this.manageParameter("BothColor", both);
-        return getThis();
+        return this.getThis();
     }
 
     public Histogram setImages(Resource primary, Resource secondary, Resource both) {
         this.manageParameter("PrimaryImage", primary);
         this.manageParameter("SecondaryImage", secondary);
         this.manageParameter("BothImage", both);
-        return getThis();
+        return this.getThis();
     }
 
     public Histogram setImagePaths(String primary, String secondary, String both) {
         this.manageParameter("PrimaryImagePath", primary);
         this.manageParameter("SecondaryImagePath", secondary);
         this.manageParameter("BothImagePath", both);
-        return getThis();
+        return this.getThis();
     }
 
     public Histogram setImageCrops(GeneralImage.Crop primary, GeneralImage.Crop secondary, GeneralImage.Crop both) {
         this.manageParameter("PrimaryImageCrop", GeneralImage.generateImageCrop(primary));
         this.manageParameter("SecondaryImageCrop", GeneralImage.generateImageCrop(secondary));
         this.manageParameter("BothImageCrop", GeneralImage.generateImageCrop(both));
-        return getThis();
+        return this.getThis();
     }
 
     public Histogram setImageTints(Color primary, Color secondary, Color both) {
         this.manageParameter("PrimaryImageTint", primary);
         this.manageParameter("SecondaryImageTint", secondary);
         this.manageParameter("BothImageTint", both);
-        return getThis();
+        return this.getThis();
     }
 
-    public Histogram setImageAplhas(Integer primary, Integer secondary, Integer both) {
+    public Histogram setImageAlphas(Integer primary, Integer secondary, Integer both) {
         this.manageParameter("PrimaryImageAlpha", primary);
         this.manageParameter("SecondaryImageAlpha", secondary);
         this.manageParameter("BothImageAlpha", both);
-        return getThis();
+        return this.getThis();
     }
 
     public Histogram setImageFlips(GeneralImage.ImageFlip primary, GeneralImage.ImageFlip secondary, GeneralImage.ImageFlip both) {
         this.manageParameter("PrimaryImageFlip", primary);
         this.manageParameter("SecondaryImageFlip", secondary);
         this.manageParameter("BothImageFlip", both);
-        return getThis();
+        return this.getThis();
     }
 
     public Histogram setImageRotates(Double primary, Double secondary, Double both) {
         this.manageParameter("PrimaryImageRotate", primary);
         this.manageParameter("SecondaryImageRotate", secondary);
         this.manageParameter("BothImageRotate", both);
-        return getThis();
+        return this.getThis();
     }
 
     public Histogram setImageMatrices(double[][] primary, double[][] secondary, double[][] both) {
         GeneralImage.setColorMatrix("PrimaryImageFlip", this, primary);
         GeneralImage.setColorMatrix("SecondaryImageFlip", this, secondary);
         GeneralImage.setColorMatrix("BothImageFlip", this, both);
-        return getThis();
+        return this.getThis();
     }
 
     @Override

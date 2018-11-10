@@ -22,7 +22,7 @@ public class RadialGradient implements Gradient {
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class RadialGradient implements Gradient {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         RadialGradient that = (RadialGradient) o;
         return Objects.equals(this.name, that.name) &&
                 Objects.equals(this.image, that.image);

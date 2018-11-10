@@ -22,8 +22,8 @@ import java.util.Map;
 public abstract class ElementBase<T extends ElementBase<T>> implements Element<T> {
     private final String name;
     private final LinkedHashMap<String, String> params = new LinkedHashMap<>();
-    private Collection<Resource> resources = new HashSet<>();
-    private List<Runnable> listeners = new ArrayList<>();
+    private final Collection<Resource> resources = new HashSet<>();
+    private final List<Runnable> listeners = new ArrayList<>();
 
     /**
      * Parent class for all elements
@@ -41,7 +41,7 @@ public abstract class ElementBase<T extends ElementBase<T>> implements Element<T
         NamePrefixProvider provider = SkinUtils.getNamePrefixProvider();
         var pref = provider.nextIncludePrefix(name);
         this.manageParameter("Include" + pref, incUsage);
-        return getThis();
+        return this.getThis();
     }
 
     @Override

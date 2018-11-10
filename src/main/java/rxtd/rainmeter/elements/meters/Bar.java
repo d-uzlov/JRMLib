@@ -33,7 +33,7 @@ public class Bar extends GeneralImage<Bar> {
      */
     public Bar setMeasure(Measure measure) {
         this.manageParameter("MeasureName", measure);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -47,7 +47,7 @@ public class Bar extends GeneralImage<Bar> {
      */
     public Bar setBarImage(Resource image) {
         this.manageParameter("BarImage", image);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -59,7 +59,7 @@ public class Bar extends GeneralImage<Bar> {
      */
     public Bar setBarColor(Color color) {
         this.manageParameter("BarColor", color);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -71,7 +71,7 @@ public class Bar extends GeneralImage<Bar> {
      */
     public Bar setBarBorder(Integer thickness) {
         this.manageParameter("BarBorder", thickness);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -83,7 +83,7 @@ public class Bar extends GeneralImage<Bar> {
      */
     public Bar setBarOrientation(Orientation orientation) {
         this.manageParameter("BarOrientation", orientation);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -95,7 +95,7 @@ public class Bar extends GeneralImage<Bar> {
      */
     public Bar setFlip(Boolean value) {
         this.manageParameter("Flip", value);
-        return getThis();
+        return this.getThis();
     }
 
 }

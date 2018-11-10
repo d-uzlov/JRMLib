@@ -21,71 +21,71 @@ public class Roundline extends MeasureBase<Roundline> {
 
     public Roundline setMeasure(Measure measure) {
         this.manageParameter("MeasureName", measure);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setStartAngle(Double value) {
         this.manageParameter("StartAngle", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setRotationAngle(Double value) {
         this.manageParameter("RotationAngle", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setLineStart(Integer value) {
         this.manageParameter("LineStart", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setLineLength(Integer value) {
         this.manageParameter("LineLength", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setLineWidth(Integer value) {
         this.manageParameter("LineWidth", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setLineColor(Color value) {
         this.manageParameter("LineColor", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setSolid(Boolean value) {
         this.manageParameter("Solid", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setControlAngle(Boolean value) {
         this.manageParameter("ControlAngle", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setControlStart(Boolean value) {
         this.manageParameter("ControlStart", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setStartShift(Integer value) {
         this.manageParameter("StartShift", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setControlLength(Boolean value) {
         this.manageParameter("ControlLength", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setLengthShift(Integer value) {
         this.manageParameter("LengthShift", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Roundline setValueRemainder(Integer value) {
         this.manageParameter("ValueRemainder", value);
-        return getThis();
+        return this.getThis();
     }
 }

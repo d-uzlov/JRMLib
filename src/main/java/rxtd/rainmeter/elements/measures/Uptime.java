@@ -22,17 +22,17 @@ public class Uptime extends MeasureBase<Uptime> {
         } else {
             this.removeParameter("Format");
         }
-        return getThis();
+        return this.getThis();
     }
 
     public Uptime setAddDaysToHours(Boolean value) {
         this.manageParameter("AddDaysToHours", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Uptime setSecondsValue(Formula formula) {
         this.manageParameter("SecondsValue", formula);
-        return getThis();
+        return this.getThis();
     }
 
     public enum FormatCode {
@@ -48,7 +48,7 @@ public class Uptime extends MeasureBase<Uptime> {
         }
 
         public String getValue() {
-            return value;
+            return this.value;
         }
     }
 

@@ -24,34 +24,34 @@ public class Loop extends MeasureBase<Loop> {
     @Override
     public Loop setMaxValue(Formula value) {
         this.manageParameter("EndValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public Loop setMaxValue(Double value) {
         this.manageParameter("EndValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public Loop setMinValue(Formula value) {
         this.manageParameter("StartValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public Loop setMinValue(Double value) {
         this.manageParameter("StartValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Loop setIncrement(Double increment) {
         this.manageParameter("Increment", increment);
-        return getThis();
+        return this.getThis();
     }
 
     public Loop setLoopCount(Integer loopCount) {
         this.manageParameter("LoopCount", loopCount);
-        return getThis();
+        return this.getThis();
     }
 }

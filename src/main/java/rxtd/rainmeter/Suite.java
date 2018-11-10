@@ -25,6 +25,7 @@ public class Suite {
     private final String name;
     private final Map<List<String>, Map<String, Pair<Skin, Boolean>>> configs = new HashMap<>();
     private final Map<List<String>, Map<String, Skin>> resourceIncludes = new HashMap<>();
+    private final Map<Path, Resource> resourceFiles = new HashMap<>();
     private boolean overrideResources = true;
     private boolean overrideSkins = true;
     private boolean fillMetadata = false;
@@ -35,7 +36,6 @@ public class Suite {
     private boolean printUnmanagedResources = false;
     private boolean printManagedResources = false;
     private boolean deduplicateResources = true;
-    private Map<Path, Resource> resourceFiles = new HashMap<>();
 
     public Suite(String name) {
         this.name = name;

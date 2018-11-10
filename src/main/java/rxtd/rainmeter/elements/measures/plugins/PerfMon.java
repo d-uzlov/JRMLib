@@ -13,22 +13,22 @@ public class PerfMon extends PluginBase<PerfMon> {
 
     public PerfMon setCategory(String category) {
         this.manageParameter("PerfMonObject", category);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMon setCounter(String counter) {
         this.manageParameter("PerfMonCounter", counter);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMon setInstance(String instance) {
         this.manageParameter("PerfMonInstance", instance);
-        return getThis();
+        return this.getThis();
     }
 
     public PerfMon setUseDifference(Boolean value) {
         this.manageParameter("PerfMonDifference", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override

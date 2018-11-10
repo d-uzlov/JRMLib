@@ -12,6 +12,6 @@ public enum StartPlace {
 
     @Override
     public String toString() {
-        return value;
+        return this.value;
     }
 }

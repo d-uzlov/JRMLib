@@ -17,15 +17,15 @@ import java.util.Collection;
  * @see <a href="https://docs.rainmeter.net/manual/meters/shape/">Rainmeter documentation</a>
  */
 public class Label extends MeterBase<Label> {
-    private Collection<Pair<String, InlineSettings.InlineOption>> inlineSettions = new ArrayList<>();
+    private Collection<Pair<String, InlineSettings.InlineOption>> inlineSettings = new ArrayList<>();
 
     public Label(String name) {
         super(name, "String");
         this.setAntiAlias(true);
         this.addBeforeWriteListener(() -> {
-            if (this.inlineSettions.size() > 0) {
+            if (this.inlineSettings.size() > 0) {
                 int i = 0;
-                for (var p : this.inlineSettions) {
+                for (var p : this.inlineSettings) {
                     i++;
                     this.manageParameter("InlinePattern" + this.createSuffix(i), p.key);
                     this.manageParameter("InlineSetting" + this.createSuffix(i), p.value);
@@ -49,7 +49,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setText(TextBuilder builder) {
         this.setTextBuilder("Text", builder);
-        return getThis();
+        return this.getThis();
     }
 
     public Label setText(Measure measure) {
@@ -66,7 +66,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setText(String text) {
         this.manageParameter("Text", text);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -85,7 +85,7 @@ public class Label extends MeterBase<Label> {
             this.removeParameter(name);
         }
         this.manageParameter(name, measure);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -100,7 +100,7 @@ public class Label extends MeterBase<Label> {
     @Deprecated
     public Label setPrefix(String prefix) {
         this.manageParameter("Prefix", prefix);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -115,7 +115,7 @@ public class Label extends MeterBase<Label> {
     @Deprecated
     public Label setPostfix(String postfix) {
         this.manageParameter("Postfix", postfix);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -130,7 +130,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setFontFace(Resource resource) {
         this.manageParameter("FontFace", resource);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -146,7 +146,7 @@ public class Label extends MeterBase<Label> {
     @Deprecated
     public Label setFontFace(String value) {
         this.manageParameter("FontFace", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -159,7 +159,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setFontSize(Integer value) {
         this.manageParameter("FontSize", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -172,7 +172,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setFontColor(Color color) {
         this.manageParameter("FontColor", color);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -199,7 +199,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setFontWeight(Integer weight) {
         this.manageParameter("FontWeight", weight);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -215,7 +215,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setStringAlign(Align value) {
         this.manageParameter("StringAlign", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -233,7 +233,7 @@ public class Label extends MeterBase<Label> {
         } else {
             this.getParams().remove("StringStyle");
         }
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -245,7 +245,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setStringCase(StringCase value) {
         this.manageParameter("StringCase", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -262,7 +262,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setStringEffect(StringEffect value) {
         this.manageParameter("StringEffect", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -275,7 +275,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setFontEffectColor(Color color) {
         this.manageParameter("FontEffectColor", color);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -293,7 +293,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setClipString(ClipString value) {
         this.manageParameter("ClipString", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -305,7 +305,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setClipStringW(Integer value) {
         this.manageParameter("ClipStringW", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -317,7 +317,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setClipStringH(Integer value) {
         this.manageParameter("ClipStringH", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -338,7 +338,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setAngle(Double value) {
         this.manageParameter("Angle", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -351,7 +351,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setPercentual(Boolean value) {
         this.manageParameter("Percentual", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -364,7 +364,7 @@ public class Label extends MeterBase<Label> {
      */
     public Label setNumOfDecimals(Integer value) {
         this.manageParameter("NumOfDecimals", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -380,14 +380,14 @@ public class Label extends MeterBase<Label> {
     public Label setScale(Integer denominator, boolean showDecimalPoint) {
         if (denominator == null) {
             this.removeParameter("Scale");
-            return getThis();
+            return this.getThis();
         }
         if (showDecimalPoint) {
             this.manageParameter("Scale", denominator + ".0");
         } else {
             this.manageParameter("Scale", denominator);
         }
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -403,7 +403,7 @@ public class Label extends MeterBase<Label> {
     public Label setScale(Double denominator, boolean showDecimalPoint) {
         if (denominator == null) {
             this.removeParameter("Scale");
-            return getThis();
+            return this.getThis();
         }
         String value = SkinUtils.print(denominator);
         if (value.contains(".")) {
@@ -420,7 +420,7 @@ public class Label extends MeterBase<Label> {
             }
 
         }
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -437,23 +437,23 @@ public class Label extends MeterBase<Label> {
      */
     public Label setAutoScale(AutoScale value) {
         this.manageParameter("AutoScale", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
-     * Pair sould contain &lt; regexp, inlineOption &gt;
+     * Pair should contain &lt; regexp, inlineOption &gt;
      */
     public Label setInlineSettings(Collection<Pair<String, InlineSettings.InlineOption>> collection) {
-        this.inlineSettions = new ArrayList<>(collection);
-        return getThis();
+        this.inlineSettings = new ArrayList<>(collection);
+        return this.getThis();
     }
 
     /**
-     * Pair sould contain &lt; regexp, inlineOption &gt;
+     * Pair should contain &lt; regexp, inlineOption &gt;
      */
     public Label addInlineSetting(String regExp, InlineSettings.InlineOption option) {
-        this.inlineSettions.add(new Pair<>(regExp, option));
-        return getThis();
+        this.inlineSettings.add(new Pair<>(regExp, option));
+        return this.getThis();
     }
 
     public enum AutoScale {
@@ -483,7 +483,7 @@ public class Label extends MeterBase<Label> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -502,7 +502,7 @@ public class Label extends MeterBase<Label> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -526,7 +526,7 @@ public class Label extends MeterBase<Label> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -543,7 +543,7 @@ public class Label extends MeterBase<Label> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -574,7 +574,7 @@ public class Label extends MeterBase<Label> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 

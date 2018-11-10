@@ -12,7 +12,7 @@ import rxtd.rainmeter.formulas.Formula;
 import java.util.ArrayList;
 
 public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasureBase<T> implements Measure<T> {
-    private ArrayList<Condition> conditions = new ArrayList<>();
+    private final ArrayList<Condition> conditions = new ArrayList<>();
     private ActionChain initialAction = null;
     private ActionChain updateAction = null;
     private ActionChain changeAction = null;
@@ -56,7 +56,7 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
     public T setUpdateAction(Action action) {
         this.manageParameter("OnUpdateAction", action);
         this.updateAction = new ActionChain(action);
-        return getThis();
+        return this.getThis();
     }
 
     public T addUpdateAction(Action action) {
@@ -65,14 +65,14 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
         }
         this.updateAction.append(action);
         this.manageParameter("OnUpdateAction", this.updateAction);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setChangeAction(Action action) {
         this.manageParameter("OnChangeAction", action);
         this.changeAction = new ActionChain(action);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -82,55 +82,55 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
         }
         this.changeAction.append(action);
         this.manageParameter("OnChangeAction", this.changeAction);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setInvertMeasure(Boolean value) {
         this.manageParameter("InvertMeasure", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setMaxValue(Formula value) {
         this.manageParameter("MaxValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setMaxValue(Double value) {
         this.manageParameter("MaxValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setMinValue(Formula value) {
         this.manageParameter("MinValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setMinValue(Double value) {
         this.manageParameter("MinValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setAverageSize(Integer size) {
         this.manageParameter("AverageSize", size);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setDisabled(Boolean value) {
         this.manageParameter("Disabled", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setPaused(Boolean value) {
         this.manageParameter("Paused", value);
-        return getThis();
+        return this.getThis();
     }
 
     private void addCompareAction(String name, Formula value, Action action) {
@@ -141,19 +141,19 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
     @Override
     public T setIfAbove(Formula value, Action action) {
         this.addCompareAction("IfAbove", value, action);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setIfBelow(Formula value, Action action) {
         this.addCompareAction("IfBelow", value, action);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setIfEqual(Formula value, Action action) {
         this.addCompareAction("IfEqual", value, action);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -163,19 +163,19 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
             throw new RuntimeException("initial action and UpdateMode.ALWAYS are incompatible");
         }
         this.manageParameter("IfConditionMode", mode);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setCondition(int index, BooleanFormula value, Action trueAction, Action falseAction) {
         this.conditions.set(index, new Condition(value, trueAction, falseAction));
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T addCondition(BooleanFormula value, Action trueAction, Action falseAction) {
         this.conditions.add(new Condition(value, trueAction, falseAction));
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -188,7 +188,7 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
             }
             this.initialAction = new ActionChain(action);
         }
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -200,13 +200,13 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
             this.initialAction = new ActionChain();
         }
         this.initialAction.append(action);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setRegExpSubstitute(Boolean value) {
         this.manageParameter("RegExpSubstitute", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -218,7 +218,7 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
         }
         this.substitute.append("\"").append(pattern).append("\":\"").append(replacement).append("\"");
         this.manageParameter("Substitute", this.substitute.toString());
-        return getThis();
+        return this.getThis();
     }
 
     private static class Condition {
@@ -226,10 +226,10 @@ public abstract class MeasureBase<T extends MeasureBase<T>> extends MeterMeasure
         final Action trueAction;
         final Action falseAction;
 
-        private Condition(BooleanFormula value, Action trueAction, Action falseACtion) {
+        private Condition(BooleanFormula value, Action trueAction, Action falseAction) {
             this.value = value;
             this.trueAction = trueAction;
-            this.falseAction = falseACtion;
+            this.falseAction = falseAction;
         }
     }
 }

@@ -80,7 +80,7 @@ public class Skin {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -107,13 +107,10 @@ public class Skin {
         }
 
         String name = element.getName();
-        if (name == null) {
-            throw new IllegalArgumentException("section name == null");
-        }
-        if (name.equalsIgnoreCase("metadata")) {
+        if ("metadata".equalsIgnoreCase(name)) {
             throw new IllegalArgumentException("section name == metadata");
         }
-        if (name.equalsIgnoreCase("rainmeter")) {
+        if ("rainmeter".equalsIgnoreCase(name)) {
             throw new IllegalArgumentException("section name == rainmeter");
         }
         for (Map.Entry<Integer, List<Element>> q : this.elementQueues.entrySet()) {

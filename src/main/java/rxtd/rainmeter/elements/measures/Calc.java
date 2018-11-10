@@ -26,26 +26,26 @@ public class Calc extends MeasureBase<Calc> {
      */
     public Calc setFormula(Formula formula) {
         this.manageParameter("Formula", formula.toCalcString());
-        return getThis();
+        return this.getThis();
     }
 
     public Calc setUpdateRandom(Boolean value) {
         this.manageParameter("UpdateRandom", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Calc setUniqueRandom(Boolean value) {
         this.manageParameter("UniqueRandom", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Calc setLowBound(Double value) {
         this.manageParameter("LowBound", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Calc setHighBound(Double value) {
         this.manageParameter("HighBound", value);
-        return getThis();
+        return this.getThis();
     }
 }

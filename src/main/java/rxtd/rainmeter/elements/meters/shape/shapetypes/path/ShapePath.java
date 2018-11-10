@@ -13,6 +13,7 @@ public class ShapePath extends ShapeElementBase {
     private boolean closePath = false;
     private boolean path1 = false;
 
+    // TODO
     public ShapePath(double startX, double startY) {
         this.startX = startX;
         this.startY = startY;

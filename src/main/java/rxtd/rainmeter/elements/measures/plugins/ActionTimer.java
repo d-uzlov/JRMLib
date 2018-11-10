@@ -2,7 +2,6 @@ package rxtd.rainmeter.elements.measures.plugins;
 
 import rxtd.rainmeter.SkinUtils;
 import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,12 +52,12 @@ public class ActionTimer extends PluginBase<ActionTimer> {
 
     public ActionTimer addNamedAction(NamedAction action) {
         this.namedActions.put(action.getName(), action);
-        return getThis();
+        return this.getThis();
     }
 
     public ActionTimer addActionList(ActionList list) {
         this.actionLists.add(list);
-        return getThis();
+        return this.getThis();
     }
 
     public Action bangExecute(ActionList list) {

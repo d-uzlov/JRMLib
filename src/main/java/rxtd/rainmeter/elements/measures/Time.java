@@ -22,48 +22,48 @@ public class Time extends MeasureBase<Time> {
         } else {
             this.removeParameter("Format");
         }
-        return getThis();
+        return this.getThis();
     }
 
     public Time setFormat(String constructedFormat) {
         this.manageParameter("Format", constructedFormat);
-        return getThis();
+        return this.getThis();
     }
 
 
     public Time setTimeStamp(Formula formula) {
         this.manageParameter("TimeStamp", formula);
-        return getThis();
+        return this.getThis();
     }
 
     public Time setTimeStampFormat(String value) {
         this.manageParameter("TimeStampFormat", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Time setTimeStampLocale(String value) {
         this.manageParameter("TimeStampLocale", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Time setFormatLocale(String locale) {
         this.manageParameter("FormatLocale", locale);
-        return getThis();
+        return this.getThis();
     }
 
     public Time setTimeZoneLocal() {
         this.manageParameter("TimeZone", "local");
-        return getThis();
+        return this.getThis();
     }
 
     public Time setTimeZoneGMT(Double offset) {
         this.manageParameter("TimeZone", offset);
-        return getThis();
+        return this.getThis();
     }
 
     public Time setDaylightSavingTime(Boolean value) {
         this.manageParameter("DaylightSavingTime", value);
-        return getThis();
+        return this.getThis();
     }
 
     public enum FormatCode {
@@ -149,43 +149,43 @@ public class Time extends MeasureBase<Time> {
         }
 
         public String getValue() {
-            return value;
+            return this.value;
         }
 
         public boolean isCanTrimLeadingZeroes() {
-            return canTrimLeadingZeroes;
+            return this.canTrimLeadingZeroes;
         }
     }
 
     public static class FormatBuilder {
-        private StringBuilder sb = new StringBuilder();
+        private final StringBuilder sb = new StringBuilder();
 
         public FormatBuilder append(String text) {
-            sb.append(text);
+            this.sb.append(text);
             return this;
         }
 
         public FormatBuilder append(FormatCode formatCode) {
-            sb.append("%").append(formatCode.getValue());
+            this.sb.append("%").append(formatCode.getValue());
             return this;
         }
 
         public FormatBuilder append(FormatCode formatCode, boolean trimZeroes) {
-            sb.append("%");
+            this.sb.append("%");
             if (trimZeroes && formatCode.isCanTrimLeadingZeroes()) {
-                sb.append("#");
+                this.sb.append("#");
             }
-            sb.append(formatCode.getValue());
+            this.sb.append(formatCode.getValue());
             return this;
         }
 
         public FormatBuilder appendLocalDate() {
-            sb.append("locale-date");
+            this.sb.append("locale-date");
             return this;
         }
 
         public FormatBuilder appendLocalTime() {
-            sb.append("locale-time");
+            this.sb.append("locale-time");
             return this;
         }
 

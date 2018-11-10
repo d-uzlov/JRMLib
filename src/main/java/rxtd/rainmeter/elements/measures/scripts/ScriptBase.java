@@ -36,7 +36,7 @@ public abstract class ScriptBase<T extends ScriptBase<T>> extends MeasureBase<T>
      * @return Bang that calls specified function without args.
      */
     protected Action bangCallFunction(String function) {
-        return this.bangCallFunction(function);
+        return this.bangCallFunction(function, (String[]) null);
     }
 
     /**

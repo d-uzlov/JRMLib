@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase<T> implements Meter<T> {
-    private List<Object> styles = new ArrayList<>();
+    private final List<Object> styles = new ArrayList<>();
 
     protected MeterBase(String name, String meter) {
         super(createName(name));
@@ -43,13 +43,13 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
                 this.addStyle(e);
             }
         }
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T addStyle(Element origin) {
         if (origin == null) {
-            return getThis();
+            return this.getThis();
         }
         this.styles.add(new Object() {
             @Override
@@ -57,7 +57,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
                 return origin.getName();
             }
         });
-        return getThis();
+        return this.getThis();
     }
 
     private void generateStyles() {
@@ -67,7 +67,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
     @Override
     public T setX(String x) {
         this.manageParameter("X", x);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -93,7 +93,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
     @Override
     public T setY(String y) {
         this.manageParameter("Y", y);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -119,7 +119,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
     @Override
     public T setW(String width) {
         this.manageParameter("W", width);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -130,7 +130,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
     @Override
     public T setH(String height) {
         this.manageParameter("H", height);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -141,25 +141,25 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
     @Override
     public T setPadding(Padding padding) {
         this.manageParameter("Padding", padding);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setHidden(String value) {
         this.manageParameter("Hidden", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setHidden(Boolean value) {
         this.manageParameter("Hidden", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setUpdateDivider(Integer divider) {
         this.manageParameter("UpdateDivider", divider);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -172,7 +172,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
         this.manageParameter("SolidColor", color);
         this.removeParameter("SolidColor2");
         this.removeParameter("GradientAngle");
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -180,64 +180,64 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
         this.manageParameter("SolidColor", color);
         this.manageParameter("SolidColor2", color2);
         this.manageParameter("GradientAngle", gradientAngle);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setBevelType(BevelType type) {
         this.manageParameter("BevelType", type);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setAntiAlias(Boolean value) {
         this.manageParameter("AntiAlias", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setToolTipText(String value) {
         this.manageParameter("ToolTipText", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setToolTipTitle(String value) {
         this.manageParameter("ToolTipTitle", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setToolTipIcon(Resource icon) {
         this.manageParameter("ToolTipIcon", icon);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setToolTipType(ToolTipType type) {
         this.manageParameter("ToolTipType", type);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setToolTipWidth(Integer value) {
         this.manageParameter("ToolTipWidth", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public T setToolTipHidden(Boolean value) {
         this.manageParameter("AntiAlias", value);
-        return getThis();
+        return this.getThis();
     }
 
     public T setTransformationMatrix(Matrix3x3 value) {
         if (value == null) {
             this.removeParameter("TransformationMatrix");
-            return getThis();
+            return this.getThis();
         }
         this.manageParameter("TransformationMatrix", SkinUtils.joinList(Arrays.asList(value.a11, value.a21, value.a12, value.a22, value.a13, value.a23), ";"));
-        return getThis();
+        return this.getThis();
     }
 
     protected void setTextBuilder(String option, TextBuilder builder) {
@@ -250,28 +250,28 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
 
     public T setMouseAction(MouseButton mouseButton, MouseAction mouseAction, Action action) {
         if (mouseButton == null || mouseAction == null) {
-            return getThis();
+            return this.getThis();
         }
         this.manageParameter(mouseButton.toString() + "Mouse" + mouseAction.toString() + "Action", action);
-        return getThis();
+        return this.getThis();
     }
 
     public T setMouseWheelAction(ScrollDirection direction, Action action) {
         if (direction == null) {
-            return getThis();
+            return this.getThis();
         }
         this.manageParameter("MouseScroll" + direction.toString() + "Action", action);
-        return getThis();
+        return this.getThis();
     }
 
     public T setMouseOverAction(Action action) {
         this.manageParameter("MouseOverAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public T setMouseLeaveAction(Action action) {
         this.manageParameter("MouseLeaveAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public enum ToolTipType {
@@ -286,7 +286,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 
@@ -350,7 +350,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
         private int counter = 1;
 
         protected Map<Measure, Integer> getMap() {
-            return map;
+            return this.map;
         }
 
         protected String getImage() {
@@ -375,7 +375,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
                 this.map.put(measure, number);
                 this.counter++;
             }
-            sb.append("%").append(number);
+            this.sb.append("%").append(number);
             return this;
         }
     }

@@ -1,6 +1,7 @@
 package rxtd.rainmeter.elements.measures.plugins;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.resources.ResourceOptions;
 import rxtd.rainmeter.resources.StreamProvider;
 import rxtd.rainmeter.variables.Variables;
@@ -24,10 +25,8 @@ public class ExternalPluginResource implements PluginResource {
     private final Path type;
 
     /**
-     * @param pluginName
-     * @param version
-     * @param dll32
-     * @param dll64
+     * @param pluginName Plugin folder name, also used in a rainmeter section to specify plugin.
+     * @param version    String that is used to specify plugin folder.
      * @param isLocal    whether this plugin is in Rainmeter/Plugins folder or in the suite folder.
      */
     public ExternalPluginResource(String pluginName, String version, StreamProvider dll32, StreamProvider dll64, boolean isLocal) {
@@ -44,7 +43,10 @@ public class ExternalPluginResource implements PluginResource {
         }
     }
 
-    private static void writePlugin(@NotNull Path path, @NotNull StreamProvider streamProvider, @NotNull ResourceOptions options) throws IOException {
+    private static void writePlugin(@NotNull Path path, @Nullable StreamProvider streamProvider, @NotNull ResourceOptions options) throws IOException {
+        if (streamProvider == null) {
+            return;
+        }
         if (!Files.exists(path)) {
             Files.createDirectories(path.getParent());
         } else if (!options.overrideFiles) {
@@ -61,7 +63,7 @@ public class ExternalPluginResource implements PluginResource {
     }
 
     public boolean isLocal() {
-        return isLocal;
+        return this.isLocal;
     }
 
     @Override
@@ -72,11 +74,11 @@ public class ExternalPluginResource implements PluginResource {
     @Override
     public String toString() {
         return "Plugin{external," +
-                "name='" + pluginName + '\'' +
-                ", version='" + version + '\'' +
-                ", 32=" + (dll32 != null) +
-                ", 64=" + (dll64 != null) +
-                ", isLocal=" + isLocal +
+                "name='" + this.pluginName + '\'' +
+                ", version='" + this.version + '\'' +
+                ", 32=" + (this.dll32 != null) +
+                ", 64=" + (this.dll64 != null) +
+                ", isLocal=" + this.isLocal +
                 '}';
     }
 
@@ -132,18 +134,14 @@ public class ExternalPluginResource implements PluginResource {
 
     @Override
     public void patch(Path configResources, Path suiteResources, @NotNull ResourceOptions options) throws IOException {
-        if (this.dll32 != null) {
-            writePlugin(this.getPaths(configResources, suiteResources).get(0), this.dll32, options);
-        }
-        if (this.dll64 != null) {
-            writePlugin(this.getPaths(configResources, suiteResources).get(1), this.dll64, options);
-        }
+        writePlugin(this.getPaths(configResources, suiteResources).get(0), this.dll32, options);
+        writePlugin(this.getPaths(configResources, suiteResources).get(1), this.dll64, options);
     }
 
     @Override
     final public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         ExternalPluginResource that = (ExternalPluginResource) o;
         return this.isLocal == that.isLocal &&
                 Objects.equals(this.pluginName, that.pluginName) &&
@@ -155,6 +153,6 @@ public class ExternalPluginResource implements PluginResource {
 
     @Override
     final public int hashCode() {
-        return Objects.hash(pluginName, version, usage, dll32, dll64, isLocal, type);
+        return Objects.hash(this.pluginName, this.version, this.usage, this.dll32, this.dll64, this.isLocal, this.type);
     }
 }

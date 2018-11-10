@@ -3,7 +3,6 @@ package rxtd.rainmeter.resources;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Objects;
@@ -38,28 +37,28 @@ public class VirtualResource implements Resource {
     }
 
     @Override
-    public void patch(Path configResources, Path suiteResources, @NotNull ResourceOptions options) throws IOException {
+    public void patch(Path configResources, Path suiteResources, @NotNull ResourceOptions options) {
 
     }
 
     @Override
     public String toString() {
         return "VirtualResource{" +
-                "usage='" + usage + '\'' +
+                "usage='" + this.usage + '\'' +
                 '}';
     }
 
     @Override
     final public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         VirtualResource that = (VirtualResource) o;
-        return Objects.equals(usage, that.usage) &&
-                Objects.equals(type, that.type);
+        return Objects.equals(this.usage, that.usage) &&
+                Objects.equals(this.type, that.type);
     }
 
     @Override
     final public int hashCode() {
-        return Objects.hash(usage, type);
+        return Objects.hash(this.usage, this.type);
     }
 }

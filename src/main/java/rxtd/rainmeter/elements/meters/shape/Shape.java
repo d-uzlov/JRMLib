@@ -55,7 +55,7 @@ public class Shape extends MeterBase<Shape> {
 
         Map<Class, Modifier> modifiers = shape.getModifiers();
         if (modifiers == null) {
-            return getThis();
+            return this.getThis();
         }
         for (var modifier : modifiers.entrySet()) {
             var descriptions = modifier.getValue().getExternalDescriptions();
@@ -78,6 +78,6 @@ public class Shape extends MeterBase<Shape> {
             }
         }
 
-        return getThis();
+        return this.getThis();
     }
 }

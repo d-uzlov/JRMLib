@@ -14,8 +14,8 @@ public class CPU extends MeasureBase<CPU> {
         return this;
     }
 
-    public CPU setProseccor(Integer vcore) {
+    public CPU setProcessor(Integer vcore) {
         this.manageParameter("Processor", vcore);
-        return getThis();
+        return this.getThis();
     }
 }

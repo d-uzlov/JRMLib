@@ -19,37 +19,37 @@ public class Rotator extends GeneralImage<Rotator> {
 
     public Rotator setImage(Resource image) {
         this.manageParameter("ImageName", image);
-        return getThis();
+        return this.getThis();
     }
 
     public Rotator setMeasure(Measure measure) {
         this.manageParameter("MeasureName", measure);
-        return getThis();
+        return this.getThis();
     }
 
     public Rotator setOffsetX(Double value) {
         this.manageParameter("OffsetX", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Rotator setOffsetY(Double value) {
         this.manageParameter("OffsetY", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Rotator setStartAngle(Double angle) {
         this.manageParameter("StartAngle", angle);
-        return getThis();
+        return this.getThis();
     }
 
     public Rotator setRotationAngle(Double value) {
         this.manageParameter("ImageName", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Rotator setValueRemainder(Integer value) {
         this.manageParameter("ValueRemainder", value);
-        return getThis();
+        return this.getThis();
     }
 
 }

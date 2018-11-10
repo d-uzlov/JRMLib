@@ -22,17 +22,17 @@ public class VariableImpl implements Variable {
 
     @Override
     public String getUsage() {
-        return usage;
+        return this.usage;
     }
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public String getInitialValue() {
-        return initialValue;
+        return this.initialValue;
     }
 
     @Override

@@ -16,26 +16,26 @@ public class FreeDiskSpace extends MeasureBase<FreeDiskSpace> {
 
     public FreeDiskSpace setDrive(String path) {
         this.manageParameter("Drive", path);
-        return getThis();
+        return this.getThis();
     }
 
     public FreeDiskSpace setDrive(Character driveLetter) {
         if (driveLetter == null) {
             this.removeParameter("Drive");
-            return getThis();
+            return this.getThis();
         }
         this.manageParameter("Drive", driveLetter + ":");
-        return getThis();
+        return this.getThis();
     }
 
     public FreeDiskSpace setTotal(Boolean value) {
         this.manageParameter("Total", value);
-        return getThis();
+        return this.getThis();
     }
 
     public FreeDiskSpace setLabel(Boolean value) {
         this.manageParameter("Label", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -43,17 +43,17 @@ public class FreeDiskSpace extends MeasureBase<FreeDiskSpace> {
      */
     public FreeDiskSpace setType(Boolean value) {
         this.manageParameter("Type", value);
-        return getThis();
+        return this.getThis();
     }
 
     public FreeDiskSpace setIgnoreRemovable(Boolean value) {
         this.manageParameter("IgnoreRemovable", value);
-        return getThis();
+        return this.getThis();
     }
 
     public FreeDiskSpace setDiskQuota(Boolean value) {
         this.manageParameter("DiskQuota", value);
-        return getThis();
+        return this.getThis();
     }
 
     public enum Type {

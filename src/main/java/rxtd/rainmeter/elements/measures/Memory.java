@@ -11,7 +11,7 @@ public class Memory extends MeasureBase<Memory> {
 
     public Memory setTotal(Boolean value) {
         this.manageParameter("Total", value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Memory extends MeasureBase<Memory> {
         }
 
         public String getValue() {
-            return value;
+            return this.value;
         }
     }
 }

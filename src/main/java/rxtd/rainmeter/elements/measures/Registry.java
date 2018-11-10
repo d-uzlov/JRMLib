@@ -19,32 +19,32 @@ public class Registry extends MeasureBase<Registry> {
 
     public Registry setRegHKey(String value) {
         this.manageParameter("RegHKey", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Registry setRegHKey(Formula value) {
         this.manageParameter("RegHKey", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Registry setRegKey(String value) {
         this.manageParameter("RegKey", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Registry setRegKey(Formula value) {
         this.manageParameter("RegKey", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Registry setRegValue(String value) {
         this.manageParameter("RegValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Registry setRegValue(Formula value) {
         this.manageParameter("RegValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     public static final class HKeys {

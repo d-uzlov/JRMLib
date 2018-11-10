@@ -24,42 +24,42 @@ public class CustomPlugin extends PluginBase<CustomPlugin> implements CustomElem
     @Override
     public CustomPlugin setOption(String name, String value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomPlugin setOption(String name, Integer value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomPlugin setOption(String name, Boolean value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomPlugin setOption(String name, Double value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomPlugin setOption(String name, Resource value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomPlugin setOption(String name, Formula value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 
     @Override
     public CustomPlugin setOption(String name, Action value) {
         this.manageParameter(name, value);
-        return getThis();
+        return this.getThis();
     }
 }

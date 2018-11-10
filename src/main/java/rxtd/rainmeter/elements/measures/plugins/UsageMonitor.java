@@ -30,47 +30,47 @@ public class UsageMonitor extends PluginBase<UsageMonitor> {
 
     public UsageMonitor setAlias(String alias) {
         this.manageParameter("Alias", alias);
-        return getThis();
+        return this.getThis();
     }
 
     public UsageMonitor setCategory(String category) {
         this.manageParameter("Category", category);
-        return getThis();
+        return this.getThis();
     }
 
     public UsageMonitor setCounter(String counter) {
         this.manageParameter("Counter", counter);
-        return getThis();
+        return this.getThis();
     }
 
     public UsageMonitor setIndex(int index) {
         this.manageParameter("Index", index);
-        return getThis();
+        return this.getThis();
     }
 
     public UsageMonitor setName(String name) {
         this.manageParameter("Name", name);
-        return getThis();
+        return this.getThis();
     }
 
     public UsageMonitor setUseRollup(Boolean value) {
         this.manageParameter("Rollup", value);
-        return getThis();
+        return this.getThis();
     }
 
     public UsageMonitor setUsePercent(Boolean value) {
         this.manageParameter("Percent", value);
-        return getThis();
+        return this.getThis();
     }
 
     public UsageMonitor setUseRawValue(Boolean value) {
         this.manageParameter("RawValue", value);
-        return getThis();
+        return this.getThis();
     }
 
     public UsageMonitor setUsePIDToName(Boolean value) {
         this.manageParameter("PIDToName", value);
-        return getThis();
+        return this.getThis();
     }
 
     public static final class Aliases {

@@ -36,7 +36,7 @@ public class IpResolveManager extends ScriptBase<IpResolveManager> {
     public IpResolveManager setSources(List<Pair<String, String>> sources) {
         if (sources == null || sources.size() == 0) {
             this.removeParameter("Sources");
-            return getThis();
+            return this.getThis();
         }
         ArrayList<String> table = new ArrayList<>();
         for (var v : sources) {
@@ -47,28 +47,28 @@ public class IpResolveManager extends ScriptBase<IpResolveManager> {
             table.add(group);
         }
         this.manageParameter("Sources", ScriptBase.makeLuaTableInitializer(table, false));
-        return getThis();
+        return this.getThis();
     }
 
     /**
      * Change current source.
      */
     public Action bangNext() {
-        return  this.bangCallFunction("Next");
+        return this.bangCallFunction("Next");
     }
 
     /**
      * Add an error to this source.
      */
     public Action bangError() {
-        return  this.bangCallFunction("Error");
+        return this.bangCallFunction("Error");
     }
 
     /**
      * Remove an error from this source.
      */
     public Action bangSuccess() {
-        return  this.bangCallFunction("Success");
+        return this.bangCallFunction("Success");
     }
 
     /**

@@ -48,7 +48,7 @@ public class Line extends MeterBase<Line> {
         this.manageParameter("LineColor" + suffix, color);
         this.manageParameter("Scale" + suffix, scale);
         this.manageParameter("LineCount", this.lineCount);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -61,7 +61,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line addLine(Measure measure, Color color) {
         this.addLine(measure, color, null);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -74,7 +74,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line setLinesWidth(Integer width) {
         this.manageParameter("LineWidth", width);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -89,7 +89,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line setAutoScale(Boolean value) {
         this.manageParameter("AutoScale", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -101,7 +101,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line setHorizontalLines(Boolean value) {
         this.manageParameter("HorizontalLines", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -113,7 +113,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line setHorizontalLineColor(Color color) {
         this.manageParameter("HorizontalLineColor", color);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -125,7 +125,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line setGraphStart(StartPlace start) {
         this.manageParameter("GraphStart", start);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -137,7 +137,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line setGraphOrientation(Orientation orientation) {
         this.manageParameter("GraphOrientation", orientation);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -149,7 +149,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line setFlip(Boolean value) {
         this.manageParameter("Flip", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -163,7 +163,7 @@ public class Line extends MeterBase<Line> {
      */
     public Line setTransformStroke(TransformStroke mode) {
         this.manageParameter("TransformStroke", mode);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -200,7 +200,7 @@ public class Line extends MeterBase<Line> {
 
         @Override
         public String toString() {
-            return value;
+            return this.value;
         }
     }
 }

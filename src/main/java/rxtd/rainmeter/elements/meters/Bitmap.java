@@ -29,47 +29,47 @@ public class Bitmap extends GeneralImage<Bitmap> {
 
     public Bitmap setMeasure(Measure measure) {
         this.manageParameter("MeasureName", measure);
-        return getThis();
+        return this.getThis();
     }
 
     public Bitmap setBitmapImage(Resource image) {
         this.manageParameter("BitmapImage", image);
-        return getThis();
+        return this.getThis();
     }
 
     public Bitmap setBitmapFrames(Integer count) {
         this.manageParameter("BitmapFrames", count);
-        return getThis();
+        return this.getThis();
     }
 
     public Bitmap setBitmapTransitionFrames(Integer count) {
         this.manageParameter("BitmapTransitionFrames", count);
-        return getThis();
+        return this.getThis();
     }
 
     public Bitmap setBitmapZeroFrame(Boolean value) {
         this.manageParameter("BitmapZeroFrame", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Bitmap setBitmapExtend(Boolean value) {
         this.manageParameter("BitmapExtend", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Bitmap setBitmapDigits(Integer value) {
         this.manageParameter("BitmapDigits", value);
-        return getThis();
+        return this.getThis();
     }
 
     public Bitmap setBitmapAlign(Align align) {
         this.manageParameter("BitmapAlign", align);
-        return getThis();
+        return this.getThis();
     }
 
     public Bitmap setBitmapSeparation(Integer value) {
         this.manageParameter("BitmapSeparation", value);
-        return getThis();
+        return this.getThis();
     }
 
     public enum Align {

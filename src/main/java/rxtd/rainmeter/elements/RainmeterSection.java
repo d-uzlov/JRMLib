@@ -54,7 +54,7 @@ public class RainmeterSection extends ElementBase<RainmeterSection> {
      */
     public RainmeterSection setUpdate(Integer value) {
         this.manageParameter("Update", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -83,7 +83,7 @@ public class RainmeterSection extends ElementBase<RainmeterSection> {
         } else {
             this.removeParameter("Update");
         }
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -106,7 +106,7 @@ public class RainmeterSection extends ElementBase<RainmeterSection> {
      */
     public RainmeterSection setDefaultUpdateDivider(Integer value) {
         this.manageParameter("DefaultUpdateDivider", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -119,7 +119,7 @@ public class RainmeterSection extends ElementBase<RainmeterSection> {
      */
     public RainmeterSection setDynamicWindowSize(Boolean value) {
         this.manageParameter("DynamicWindowSize", value);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -137,7 +137,7 @@ public class RainmeterSection extends ElementBase<RainmeterSection> {
     public RainmeterSection setSkinWidthHeight(Integer width, Integer height) {
         this.manageParameter("SkinWidth", width);
         this.manageParameter("SkinHeight", height);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -152,47 +152,47 @@ public class RainmeterSection extends ElementBase<RainmeterSection> {
      */
     public RainmeterSection setDragMargins(Padding padding) {
         this.manageParameter("DragMargins", padding);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setOnRefreshAction(Action action) {
         this.manageParameter("OnRefreshAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setOnUpdateAction(Action action) {
         this.manageParameter("OnUpdateAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setOnCloseAction(Action action) {
         this.manageParameter("OnCloseAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setOnFocusAction(Action action) {
         this.manageParameter("OnFocusAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setOnUnfocusAction(Action action) {
         this.manageParameter("OnUnfocusAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setOnWakeAction(Action action) {
         this.manageParameter("OnWakeAction", action);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setTransitionUpdate(Integer value) {
         this.manageParameter("TransitionUpdate", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setToolTipHidden(Boolean value) {
         this.manageParameter("ToolTipHidden", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setGroup(String... value) {
@@ -201,12 +201,12 @@ public class RainmeterSection extends ElementBase<RainmeterSection> {
 
     public RainmeterSection setGroup(Collection<String> value) {
         this.manageParameter("Group", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setSelectedColor(Color value) {
         this.manageParameter("SelectedColor", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setDragGroup(String... value) {
@@ -215,56 +215,56 @@ public class RainmeterSection extends ElementBase<RainmeterSection> {
 
     public RainmeterSection setDragGroup(Collection<String> value) {
         this.manageParameter("DragGroup", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setBackground(Resource value) {
         this.manageParameter("Background", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setBackgroundMode(BackgroundMode value) {
         this.manageParameter("BackgroundMode", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setBackgroundMargins(Padding value) {
         this.manageParameter("BackgroundMargins", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setSolidColor(Color value) {
         this.manageParameter("SolidColor", value);
         this.removeParameter("SolidColor2");
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setColors(Color value1, Color value2) {
         this.manageParameter("SolidColor", value1);
         this.manageParameter("SolidColor2", value2);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setGradientAngle(Double value) {
         this.manageParameter("GradientAngle", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setBevelType(BevelType value) {
         this.manageParameter("BevelType", value);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection setContextActions(Collection<Pair<String, Action>> actions) {
         this.contextActions.clear();
         this.contextActions.addAll(actions);
-        return getThis();
+        return this.getThis();
     }
 
     public RainmeterSection addContextAction(Pair<String, Action> action) {
         this.contextActions.clear();
         this.contextActions.add(action);
-        return getThis();
+        return this.getThis();
     }
 
     // TODO image options?

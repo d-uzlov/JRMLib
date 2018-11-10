@@ -31,7 +31,7 @@ public class FrostedGlass extends PluginBase<FrostedGlass> {
 
     public FrostedGlass setType(Type value) {
         this.manageParameter("Type", value);
-        return getThis();
+        return this.getThis();
     }
 
     public FrostedGlass setBorder(Border... borders) {

@@ -1,8 +1,6 @@
 package rxtd.rainmeter.elements.measures.plugins;
 
 import org.jetbrains.annotations.Nullable;
-import rxtd.rainmeter.actions.Action;
-import rxtd.rainmeter.actions.BangUtils;
 import rxtd.rainmeter.elements.measures.MeasureBase;
 import rxtd.rainmeter.formulas.Formula;
 import rxtd.rainmeter.variables.Variables;
@@ -50,11 +48,11 @@ public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T>
         if (pluginPath == null) {
             this.localPluginPath = null;
             this.wrappedPlugin = null;
-            return getThis();
+            return this.getThis();
         }
         this.localPluginPath = pluginPath;
         this.wrappedPlugin = new VirtualPluginResource("./" + pluginPath, null);
-        return getThis();
+        return this.getThis();
     }
 
     /**
@@ -96,7 +94,7 @@ public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T>
      */
     protected Formula inline(String function, @Nullable String... args) {
         if (this.wrappedPlugin != null) {
-
+            // TODO
         }
         StringBuilder value = new StringBuilder("[&" + this.getName() + ":" + function + "(");
         if (args != null) {
