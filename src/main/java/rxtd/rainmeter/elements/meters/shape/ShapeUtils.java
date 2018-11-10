@@ -22,11 +22,10 @@ public class ShapeUtils {
 
             String value;
             if (v == null) {
-                if (skipNulls) {
-                    value = "*";
-                } else {
+                if (!skipNulls) {
                     break;
                 }
+                value = "*";
             } else {
                 value = v.toString();
             }

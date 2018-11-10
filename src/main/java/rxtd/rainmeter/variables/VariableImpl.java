@@ -1,5 +1,7 @@
 package rxtd.rainmeter.variables;
 
+import rxtd.rainmeter.SkinUtils;
+
 public class VariableImpl implements Variable {
     private final String name;
     private final String usage;
@@ -7,7 +9,7 @@ public class VariableImpl implements Variable {
     private final String initialValue;
 
     VariableImpl(String name, String initialValue) {
-        if (name == null) {
+        if (name == null || !SkinUtils.isAllASCII(name)) {
             throw new IllegalArgumentException();
         }
         this.name = name;

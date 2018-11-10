@@ -1,5 +1,6 @@
 package rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.extern;
 
+import org.jetbrains.annotations.NotNull;
 import rxtd.rainmeter.GradientOption;
 import rxtd.rainmeter.SkinUtils;
 
@@ -26,6 +27,7 @@ public class LinearGradient implements Gradient {
         return "LinearGradient";
     }
 
+    @NotNull
     @Override
     public String getName() {
         return this.name;

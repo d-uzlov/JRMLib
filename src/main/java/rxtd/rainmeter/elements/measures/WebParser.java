@@ -6,11 +6,12 @@ import rxtd.rainmeter.actions.ActionChain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WebParser extends MeasureBase<WebParser> {
-    // TODO move headers from list to map
-    private List<Header> headers = null;
+    private Map<String, String> headers = new LinkedHashMap<>();
     private ActionChain finishAction = null;
     private ActionChain onConnectErrorAction = null;
     private ActionChain onRegExpErrorAction = null;
@@ -18,6 +19,7 @@ public class WebParser extends MeasureBase<WebParser> {
 
     public WebParser(String name) {
         super(name, "WebParser");
+        this.addBeforeWriteListener(this::generateHeaders);
     }
 
     public WebParser() {
@@ -117,37 +119,32 @@ public class WebParser extends MeasureBase<WebParser> {
         return this.getThis();
     }
 
-    public WebParser setHeaders(Header... headers) {
-        return this.setHeaders(Arrays.asList(headers));
-    }
-
-    public WebParser setHeaders(Collection<Header> headers) {
+    public WebParser setHeaders(Map<String, String> headers) {
         this.headers.clear();
-        this.headers.addAll(headers);
+        this.headers.putAll(headers);
         this.generateHeaders();
         return this.getThis();
     }
 
     private void generateHeaders() {
         int index = 1;
-        for (var h : this.headers) {
-            if (h == null || h.name == null || h.value == null) {
+        for (var h : this.headers.entrySet()) {
+            if (h == null || h.getKey() == null || h.getValue() == null) {
                 continue;
             }
-            if (h.name.contains(":")) {
+            if (h.getKey().contains(":")) {
                 throw new IllegalArgumentException();
             }
-            this.manageParameter("Header" + this.createSuffix(index), h.name + ": " + h.value);
+            this.manageParameter("Header" + this.createSuffix(index), h.getKey()+ ": " + h.getValue());
             index++;
         }
     }
 
-    public WebParser addHeader(Header header) {
-        if (this.headers == null) {
-            this.headers = new ArrayList<>();
+    public WebParser addHeader(String name, String value) {
+        if (name.contains(":")) {
+            throw new IllegalArgumentException();
         }
-        this.headers.add(header);
-        this.generateHeaders();
+        this.headers.put(name, value);
         return this.getThis();
     }
 
@@ -251,16 +248,6 @@ public class WebParser extends MeasureBase<WebParser> {
         @Override
         public String toString() {
             return this.value;
-        }
-    }
-
-    public static class Header {
-        public final String name;
-        public final String value;
-
-        public Header(String name, String value) {
-            this.name = name;
-            this.value = value;
         }
     }
 }

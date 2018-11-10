@@ -3,7 +3,7 @@ package rxtd.rainmeter.elements.meters.shape;
 import rxtd.rainmeter.elements.meters.MeterBase;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.ShapeElement;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.Modifier;
-import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.extern.ExternalDescription;
+import rxtd.rainmeter.elements.meters.shape.shapetypes.ExternalDescription;
 
 import java.util.HashMap;
 import java.util.Map;

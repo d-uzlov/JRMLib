@@ -1,7 +1,9 @@
 package rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.extern;
 
+import org.jetbrains.annotations.NotNull;
 import rxtd.rainmeter.GradientOption;
 import rxtd.rainmeter.SkinUtils;
+import rxtd.rainmeter.elements.meters.shape.ShapeUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -12,14 +14,15 @@ public class RadialGradient implements Gradient {
 
     public RadialGradient(String name, boolean useGammaCorrection, double centerX, double centerY, Double offsetX, Double offsetY, Double radiusX, Double radiusY, List<GradientOption> colors) {
         this.name = name + (useGammaCorrection ? "1" : "");
-        this.image = SkinUtils.joinGradient(colors);
+        this.image = ShapeUtils.createImage(true, centerX, centerY, offsetX, offsetY, radiusX, radiusY) + "|" + SkinUtils.joinGradient(colors);
     }
 
     @Override
     public String getType() {
-        return "LinearGradient";
+        return "RadialGradient";
     }
 
+    @NotNull
     @Override
     public String getName() {
         return this.name;

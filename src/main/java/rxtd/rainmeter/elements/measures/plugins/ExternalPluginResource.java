@@ -39,6 +39,7 @@ public class ExternalPluginResource implements PluginResource {
         if (this.isLocal) {
             this.usage = Variables.Skin.RESOURCES_FOLDER.getUsage() + "Plugins/" + pluginName + "/" + (version == null ? "" : version);
         } else {
+            //TODO wtf
             this.usage = pluginName;
         }
     }

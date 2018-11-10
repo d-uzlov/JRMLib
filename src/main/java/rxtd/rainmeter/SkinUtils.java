@@ -90,4 +90,16 @@ public class SkinUtils {
     public static String pipeSeparatedList(Collection<?> values) {
         return joinList(values, "|");
     }
+
+    public static boolean isAllASCII(String input) {
+        boolean isASCII = true;
+        for (int i = 0; i < input.length(); i++) {
+            int c = input.charAt(i);
+            if (c > 0x7F) {
+                isASCII = false;
+                break;
+            }
+        }
+        return isASCII;
+    }
 }

@@ -2,7 +2,7 @@ package rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.attribute;
 
 import rxtd.rainmeter.SkinUtils;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.ModifierBase;
-import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.extern.ExternalDescription;
+import rxtd.rainmeter.elements.meters.shape.shapetypes.ExternalDescription;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.extern.Gradient;
 
 import java.awt.Color;

@@ -51,8 +51,7 @@ public abstract class ShapeElementBase implements ShapeElement<ShapeElementBase>
             if (e.getKey() == null || e.getValue() == null) {
                 continue;
             }
-            Modifier modifier = e.getValue();
-            sb.append("|").append(modifier.asString());
+            sb.append("|").append(e.getValue().toString());
         }
 
         return sb.toString();

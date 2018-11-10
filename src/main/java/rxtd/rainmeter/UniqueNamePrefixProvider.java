@@ -44,18 +44,6 @@ public class UniqueNamePrefixProvider implements NamePrefixProvider {
         }
     }
 
-    private static boolean isAllASCII(String input) {
-        boolean isASCII = true;
-        for (int i = 0; i < input.length(); i++) {
-            int c = input.charAt(i);
-            if (c > 0x7F) {
-                isASCII = false;
-                break;
-            }
-        }
-        return isASCII;
-    }
-
     public void setZeroPaddingSize(int size) {
         if (size < 1) {
             this.decimalFormat = new DecimalFormat();
@@ -73,7 +61,7 @@ public class UniqueNamePrefixProvider implements NamePrefixProvider {
         if (suggest == null) {
             return prefix;
         }
-        if (!isAllASCII(suggest) || !suggest.chars().allMatch(value -> Character.isLetter(value) || value == '_' || Character.isDigit(value))) {
+        if (!SkinUtils.isAllASCII(suggest) || !suggest.chars().allMatch(value -> Character.isLetter(value) || value == '_' || Character.isDigit(value))) {
             throw new RuntimeException("only digits, ASCII letters and '_' are allowed in names: " + suggest);
         }
         return prefix + "_" + suggest;
