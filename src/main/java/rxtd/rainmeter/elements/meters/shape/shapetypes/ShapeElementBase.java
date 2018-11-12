@@ -1,21 +1,26 @@
 package rxtd.rainmeter.elements.meters.shape.shapetypes;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.Modifier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public abstract class ShapeElementBase implements ShapeElement<ShapeElementBase> {
     private final Map<Class, Modifier> modifiers = new HashMap<>();
     private final List<Runnable> listeners = new ArrayList<>();
+    private final Set<ExternalDescription> descriptions = new HashSet<>();
     private String name;
     private String typeImage;
 
     @Override
-    public Map<Class, Modifier> getModifiers() {
-        return this.modifiers;
+    public @NotNull Set<ExternalDescription> getExternalDescriptions() {
+        return this.descriptions;
     }
 
     protected void setImage(String name, String typeImage) {
@@ -23,7 +28,7 @@ public abstract class ShapeElementBase implements ShapeElement<ShapeElementBase>
         this.typeImage = typeImage;
     }
 
-    protected void addBeforeWriteListener(Runnable listener) {
+    protected void addBeforeBurnListener(Runnable listener) {
         this.listeners.add(listener);
     }
 
@@ -33,9 +38,17 @@ public abstract class ShapeElementBase implements ShapeElement<ShapeElementBase>
         }
     }
 
+    protected void addExternalDescription(ExternalDescription description) {
+        this.descriptions.add(description);
+    }
+
     @Override
     public ShapeElementBase addModifier(Modifier modifier) {
         this.modifiers.put(modifier.getClass(), modifier);
+        var descriptions = modifier.getExternalDescriptions();
+        if (descriptions != null) {
+            this.descriptions.addAll(descriptions);
+        }
         return this;
     }
 

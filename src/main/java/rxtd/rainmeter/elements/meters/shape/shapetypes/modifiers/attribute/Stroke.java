@@ -1,5 +1,6 @@
 package rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.attribute;
 
+import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.SkinUtils;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.ModifierBase;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.ExternalDescription;
@@ -13,7 +14,6 @@ import java.util.Set;
  * @see <a href="https://docs.rainmeter.net/manual/meters/shape/#Stroke">Rainmeter documentation</a>
  */
 public class Stroke extends ModifierBase {
-    public final static Stroke TRANSPARENT = new Stroke(new Color(0, 0, 0, 0));
     private final Gradient gradient;
 
     /**
@@ -33,7 +33,7 @@ public class Stroke extends ModifierBase {
     }
 
     @Override
-    public Set<ExternalDescription> getExternalDescriptions() {
+    public @Nullable Set<ExternalDescription> getExternalDescriptions() {
         return Collections.singleton(this.gradient);
     }
 }

@@ -19,25 +19,25 @@ public interface Meter<T extends Meter<T>> extends Element<T> {
      * Specifies one or more sections as
      * <a href="https://docs.rainmeter.net/manual/meters/general-options/meterstyles/">MeterStyles</a>
      * from which option values are inherited.
-     * Multiple MeterStyles are delimited with pipes (|).
      *
      * @see <a href="https://docs.rainmeter.net/manual/meters/general-options/#MeterStyle">Rainmeter documentation</a>
      */
     T setStyle(Element... origin);
 
+    /**
+     * Adds {@code origin.getName()} to the list of styles.<br/>
+     * All styles that have already been set for this element are preserved.
+     *
+     * @see #setStyle
+     */
     T addStyle(Element origin);
 
     /**
      * Specifies the x (horizontal) position of the meter in pixels
      * relative to the top-left edge of the skin.<br/>
      * <br/>
-     * Relative positioning: If the value is appended with r, the position is relative to the top/left edge of the previous meter.
-     * If the value is appended with R, the position is relative to the bottom/right edge of the previous meter.<br/>
-     * <br/>
-     * Examples:<br/>
+     * Example:<br/>
      * {@code X=150} : Meter begins 150 horizontal pixels from the left edge of the skin window.<br/>
-     * {@code X=10R} : Meter begins 10 horizontal pixels to the right of the previous meter.<br/>
-     * <br/>
      * <br/>
      * Default: {@code 0}
      *
@@ -45,32 +45,59 @@ public interface Meter<T extends Meter<T>> extends Element<T> {
      */
     T setX(Integer x);
 
+    /**
+     * If {@code append} is {@code false}, the position is relative to the top/left edge of the previous meter.
+     * If {@code append} is {@code true}, the position is relative to the bottom/right edge of the previous meter.<br/>
+     * <br/>
+     * Example:<br/>
+     * {@code X=10}, {@code append=true} : Meter begins 10 horizontal pixels to the right of the previous meter.<br/>
+     * <br/>
+     * Default: none
+     *
+     * @see <a href="https://docs.rainmeter.net/manual/meters/general-options/#XY">Rainmeter documentation</a>
+     */
     T setXRelative(int x, boolean append);
 
+    /**
+     * If {@code append} is {@code false}, the position is relative to the top/left edge of the {@code base} meter.
+     * If {@code append} is {@code true}, the position is relative to the bottom/right edge of the {@code base} meter.<br/>
+     * <br/>
+     * Example:<br/>
+     * {@code X=10}, {@code append=true} : Meter begins 10 horizontal pixels to the right of the {@code base} meter.<br/>
+     * <br/>
+     * This is achieved via meter section variables ({@code [MeterName:X]}) so if you use this you need to set {@code DynamicVariables=true}
+     * or set some option on this meter to make it reread options.
+     * <br/>
+     * Default: none
+     */
     T setXRelative(Meter base, int offset, boolean append);
 
+    /**
+     * Sets arbitrary string as the option value for this element.<br/>
+     * Use it when you want to set some formula or variable as the option value.
+     */
     T setX(String x);
 
     /**
-     * Specifies the y (vertical) position of the meter in pixels relative to the top-left edge of the skin.<br/>
-     * <br/>
-     * Relative positioning: If the value is appended with r, the position is relative to the top/left edge of the previous meter.
-     * If the value is appended with R, the position is relative to the bottom/right edge of the previous meter.<br/>
-     * <br/>
-     * Examples:<br/>
-     * {@code Y=75} : Meter begins 75 vertical pixels from the top edge of the skin window.<br/>
-     * {@code Y=0r} : Meter begins at the same vertical position as the previous meter.<br/><br/>
-     * <br/>
-     * Default: {@code 0}
-     *
+     * @see #setX(Integer)
      * @see <a href="https://docs.rainmeter.net/manual/meters/general-options/#XY">Rainmeter documentation</a>
      */
     T setY(Integer y);
 
+    /**
+     * @see #setXRelative(int, boolean)
+     * @see <a href="https://docs.rainmeter.net/manual/meters/general-options/#XY">Rainmeter documentation</a>
+     */
     T setYRelative(int y, boolean append);
 
+    /**
+     * @see #setXRelative(Meter, int, boolean)
+     */
     T setYRelative(Meter base, int offset, boolean append);
 
+    /**
+     * @see #setX(String)
+     */
     T setY(String y);
 
     /**
@@ -81,6 +108,10 @@ public interface Meter<T extends Meter<T>> extends Element<T> {
      */
     T setW(Integer width);
 
+    /**
+     * Sets arbitrary string as the option value for this element.<br/>
+     * Use it when you want to set some formula or variable as the option value.
+     */
     T setW(String width);
 
     /**
@@ -91,7 +122,13 @@ public interface Meter<T extends Meter<T>> extends Element<T> {
      */
     T setH(Integer height);
 
+    /**
+     * Sets arbitrary string as the option value for this element.<br/>
+     * Use it when you want to set some formula or variable as the option value.
+     */
     T setH(String height);
+
+    // TODO javadoc below may be inaccurate
 
     /**
      * Adds padding in pixels around any or all sides of a meter.

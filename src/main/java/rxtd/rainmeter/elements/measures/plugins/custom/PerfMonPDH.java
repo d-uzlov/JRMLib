@@ -1,10 +1,11 @@
 package rxtd.rainmeter.elements.measures.plugins.custom;
 
-import rxtd.rainmeter.elements.measures.plugins.ExternalPluginResource;
+import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.elements.measures.plugins.PluginBase;
 import rxtd.rainmeter.elements.measures.plugins.PluginResource;
 import rxtd.rainmeter.elements.measures.plugins.VirtualPluginResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
  */
 public class PerfMonPDH extends PluginBase<PerfMonPDH> {
     private final static PluginResource PLUGIN = new VirtualPluginResource("PerfMonPDH", null);
+    private final List<Child> children = new ArrayList<>();
 
     public PerfMonPDH(String name) {
         super(name, PLUGIN);
@@ -26,6 +28,14 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
     @Override
     protected PerfMonPDH getThis() {
         return this;
+    }
+
+    @Override
+    public PerfMonPDH wrap(@Nullable PluginResource plugin) {
+        for (var c : this.children) {
+            c.wrap(plugin);
+        }
+        return super.wrap(plugin);
     }
 
     public PerfMonPDH setCategory(String category) {
@@ -226,11 +236,8 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
         private Child(String name) {
             super(name, PLUGIN);
             this.setParent(PerfMonPDH.this.getName());
-
-            this.addBeforeWriteListener(() -> {
-                String parentLocalPath = PerfMonPDH.this.getLocalPathProvider().get();
-                this.wrap(parentLocalPath);
-            });
+            PerfMonPDH.this.children.add(this);
+            this.wrap(PerfMonPDH.this.getPluginProvider().get());
         }
 
         private void setParent(String measureName) {
@@ -268,17 +275,10 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
         }
 
         @Override
-        public Child wrap(String pluginPath) {
-            if (StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE).getCallerClass() != Child.class) {
-                throw new UnsupportedOperationException("This method can not be used on Child. Use it on parent measure.");
-            }
-            return super.wrap(pluginPath);
-        }
-
-        @Override
-        public Child wrap(ExternalPluginResource plugin) {
-            if (StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE).getCallerClass() != Child.class) {
-                throw new UnsupportedOperationException("This method can not be used on Child. Use it on parent measure.");
+        public Child wrap(PluginResource plugin) {
+            var clazz = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE).getCallerClass();
+            if (clazz != PerfMonPDH.class && clazz != Child.class) {
+                throw new UnsupportedOperationException("This method can not be used on Child. Use it on parent measure instead.");
             }
             return super.wrap(plugin);
         }

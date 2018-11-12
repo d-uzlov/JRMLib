@@ -1,5 +1,6 @@
 package rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.attribute;
 
+import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.SkinUtils;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.ModifierBase;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.ExternalDescription;
@@ -33,7 +34,7 @@ public class Fill extends ModifierBase {
     }
 
     @Override
-    public Set<ExternalDescription> getExternalDescriptions() {
+    public @Nullable Set<ExternalDescription> getExternalDescriptions() {
         return Collections.singleton(this.gradient);
     }
 }

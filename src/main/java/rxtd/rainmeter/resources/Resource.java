@@ -25,13 +25,13 @@ public interface Resource {
     /**
      * Currently used for file write deduplication but may be used for other purposes in the future.
      *
-     * @return all file paths that is used by this resource.
+     * @return all file paths that are used by this resource.
      */
     @Nullable
     List<Path> getPaths(Path configResources, Path suiteResources);
 
     /**
-     * @return false if human action should be taken to manage this resource (e.g. to copy some file)
+     * @return {@code false} if human action should be taken to manage this resource (e.g. to copy some file)
      */
     boolean isAutoManaged();
 

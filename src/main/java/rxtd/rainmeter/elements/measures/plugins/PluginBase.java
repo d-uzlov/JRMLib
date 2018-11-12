@@ -1,5 +1,6 @@
 package rxtd.rainmeter.elements.measures.plugins;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.elements.measures.MeasureBase;
 import rxtd.rainmeter.formulas.Formula;
@@ -7,26 +8,29 @@ import rxtd.rainmeter.variables.Variables;
 
 import java.util.function.Supplier;
 
+/**
+ * Base class for all plugin measures.<br/>
+ * TODO add desc
+ *
+ * @param <T>
+ */
 public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T> {
     private final static PluginResource LOCAL_WRAP_PLUGIN = ExternalPluginResource.fromJar("/rxtd/rainmeter/plugins/LocalPluginLoader", "LocalPluginLoader", null, false);
-    private final PluginResource plugin;
     private PluginResource wrappedPlugin = null;
-    private String localPluginPath = null;
     private boolean sectionVariablesExist = false;
 
     public PluginBase(String name, PluginResource plugin) {
         super(name, "Plugin");
-        this.plugin = plugin;
 
         this.addBeforeWriteListener(() -> {
-            if (this.localPluginPath != null) {
+            if (this.wrappedPlugin != null) {
+                if (this.getParams().containsKey("PluginPath")) {
+                    throw new RuntimeException();
+                }
                 this.manageParameter("Plugin", LOCAL_WRAP_PLUGIN);
-                this.addResource(LOCAL_WRAP_PLUGIN);
-                this.manageParameter("PluginPath", Variables.Skin.RESOURCES_FOLDER.getUsage() + this.localPluginPath);
-                this.addResource(this.wrappedPlugin);
+                this.manageParameter("PluginPath", this.wrappedPlugin);
             } else {
                 this.manageParameter("Plugin", plugin);
-                this.addResource(this.plugin);
             }
         });
     }
@@ -37,22 +41,14 @@ public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T>
      * I think it's inconvenient. There are times when you don't want plugin to be global.
      * <br/>
      * This function replaces plugin link to a local one, which is specified by {@code pluginPath}.
+     * <br/><br/>
+     * This method is simple wrap over {@link #wrap(PluginResource)} so it can't be overridden.
      *
      * @param pluginPath Path to a folder with two files: {@code 64-bit.dll} and {@code 32-bit.dll}, relative to Resources folder
-     * @see #wrap(ExternalPluginResource)
+     * @see #wrap(PluginResource)
      */
-    public T wrap(String pluginPath) {
-        if (this.sectionVariablesExist) {
-            throw new RuntimeException("wrapping can't be changed after bang creation");
-        }
-        if (pluginPath == null) {
-            this.localPluginPath = null;
-            this.wrappedPlugin = null;
-            return this.getThis();
-        }
-        this.localPluginPath = pluginPath;
-        this.wrappedPlugin = new VirtualPluginResource("./" + pluginPath, null);
-        return this.getThis();
+    public final T wrap(@Nullable String pluginPath, boolean absolutePath) {
+        return this.wrap(new VirtualPluginResource((absolutePath ? "" : Variables.Skin.RESOURCES_FOLDER.getUsage()) + pluginPath, null));
     }
 
     /**
@@ -63,25 +59,21 @@ public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T>
      * This function replaces plugin link to a local one, which is specified by {@code pluginPath}.
      *
      * @throws IllegalArgumentException if {@code plugin} is not local.
-     * @see #wrap(String)
      */
-    public T wrap(ExternalPluginResource plugin) {
-        if (plugin == null) {
-            return this.wrap((String) null);
-        } else {
-            if (!plugin.isLocal()) {
-                throw new IllegalArgumentException();
-            }
-            return this.wrap(plugin.getUsage());
+    public T wrap(@Nullable PluginResource plugin) {
+        if (this.sectionVariablesExist && this.wrappedPlugin != plugin) {
+            throw new RuntimeException("wrapping can't be changed after inline function call creation");
         }
+        this.wrappedPlugin = plugin;
+        return this.getThis();
     }
 
-    protected Supplier<String> getLocalPathProvider() {
-        return () -> this.localPluginPath;
+    protected @NotNull Supplier<PluginResource> getPluginProvider() {
+        return () -> this.wrappedPlugin;
     }
 
     /**
-     * This function should be called after every SectionVariable creation for this measure.
+     * This function should be called after every SectionVariable creation for this measure, if {@link #inline} wasn't used.
      */
     protected void setSectionVariablesExist() {
         this.sectionVariablesExist = true;
@@ -92,15 +84,23 @@ public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T>
      * @param args     list of args for function. May be {@code null} if none needed.
      * @return inline formula that calls specified function with specified args.
      */
-    protected Formula inline(String function, @Nullable String... args) {
-        if (this.wrappedPlugin != null) {
-            // TODO
+    protected Formula inline(@NotNull String function, @Nullable String... args) {
+        this.sectionVariablesExist = true;
+
+        StringBuilder value = new StringBuilder("[&" + this.getName() + ":");
+        if (this.wrappedPlugin == null) {
+            value.append(function).append("(");
+        } else {
+            value.append("_(").append(function);
+            if (args != null) {
+                value.append(",");
+            }
         }
-        StringBuilder value = new StringBuilder("[&" + this.getName() + ":" + function + "(");
         if (args != null) {
             value.append(String.join(",", args));
         }
         value.append(")]");
+
         return new Formula(value.toString());
     }
 }

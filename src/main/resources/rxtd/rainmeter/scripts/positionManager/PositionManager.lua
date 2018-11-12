@@ -221,7 +221,6 @@ end
 local function getNames()
     --- int -> { measureStringValue, measureInfo }
     local tNames = {}
-    local tMeasures = tMeasures
     local nIndex = 0
     for i = 1, nMeasureCount, 1 do
         local nValue = tMeasures[i][1]:GetValue()
@@ -236,7 +235,6 @@ local function getNames()
             break
         end
     end
-    tNames[0] = nIndex
     return tNames
 end
 
@@ -248,8 +246,7 @@ end
 
 --- Ensures that all names have some assigned meter groups
 local function updateNameMapping(tNames)
-    local tMap = tMap
-    local nNamesCount = tNames[0]
+    local nNamesCount = #tNames
     for i = 1, nNamesCount, 1 do
         local tMapValue = tMap[tNames[i][1]]
         if (tMapValue == nil) then
@@ -260,11 +257,8 @@ end
 
 --- Sets new meter positions and disables hiding
 local function updateMetersMapping(tNames)
-    local tMap = tMap
-    local tMeters = tMeters
-    local tPlaceMap = tPlaceMap
 
-    local nNamesCount = tNames[0]
+    local nNamesCount = #tNames
     for i = 1, nNamesCount, 1 do
         local meterInfo = tMeters[tMap[tNames[i][1]]]
         local baseHandle = meterInfo[1]

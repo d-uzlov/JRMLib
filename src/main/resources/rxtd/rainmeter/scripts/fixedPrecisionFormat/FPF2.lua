@@ -27,12 +27,7 @@ local function readSuffixes()
     else
         tSuffixes = metricSuffixes
     end
-    tSuffixes[0] = #tSuffixes
-    if (tSuffixes[0] == 0) then
-        tSuffixes = { '' }
-        tSuffixes[0] = #tSuffixes
-    end
-    for i = 1, tSuffixes[0] do
+    for i = 1, #tSuffixes do
         tSuffixes[i] = sSuffix1 .. tSuffixes[i] .. sPostfix
     end
 end
@@ -90,7 +85,7 @@ function FormatNumber(sInputValue, sPrecision)
     end
 
     local nDivCount = 1
-    while (nAbsValue >= nBarrierValue and nDivCount < tSuffixes[0]) do
+    while (nAbsValue >= nBarrierValue and nDivCount < #tSuffixes) do
         nAbsValue = nAbsValue * nDivisorReverse
         nDivCount = nDivCount + 1
     end

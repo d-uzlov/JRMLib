@@ -4,13 +4,17 @@ import org.jetbrains.annotations.NotNull;
 import rxtd.rainmeter.SkinUtils;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.ShapeElementBase;
 
+import java.util.Objects;
+
 public class ShapePath extends ShapeElementBase {
     private PathDescription description = null;
     private boolean path1 = false;
 
     public ShapePath() {
-        this.addBeforeWriteListener(this::construct);
+        this.addBeforeBurnListener(this::construct);
+        this.addBeforeBurnListener(() -> this.addExternalDescription(this.description));
     }
+
     public ShapePath setPath1(boolean path1) {
         this.path1 = path1;
         return this;
@@ -30,8 +34,8 @@ public class ShapePath extends ShapeElementBase {
 
     public static class PathDescriptionImpl implements PathDescription {
         private final StringBuilder sb = new StringBuilder();
-        private boolean closePath = false;
         private final String name;
+        private boolean closePath = false;
         private String image = null;
 
         public PathDescriptionImpl(String name, double startX, double startY) {
@@ -73,6 +77,25 @@ public class ShapePath extends ShapeElementBase {
             }
             this.image = this.sb.toString();
             return this.image;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || this.getClass() != o.getClass()) return false;
+            PathDescriptionImpl that = (PathDescriptionImpl) o;
+            return this.closePath == that.closePath &&
+                    // TODO bad :/
+                    // How should we compare instances of this class?
+                    // Same goes for hashCode
+                    Objects.equals(this.sb, that.sb) &&
+                    Objects.equals(this.name, that.name) &&
+                    Objects.equals(this.image, that.image);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(this.sb, this.name, this.closePath, this.image);
         }
     }
 }

@@ -1,11 +1,13 @@
 package rxtd.rainmeter.elements.meters.shape.shapetypes;
 
+import org.jetbrains.annotations.Nullable;
 import rxtd.Pair;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.Modifier;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @see <a href="https://docs.rainmeter.net/manual/meters/shape/#Combine">Rainmeter documentation</a>
@@ -55,7 +57,7 @@ public class Combine implements ShapeElement<Combine> {
     }
 
     @Override
-    public Map<Class, Modifier> getModifiers() {
+    public @Nullable Set<ExternalDescription> getExternalDescriptions() {
         return null;
     }
 

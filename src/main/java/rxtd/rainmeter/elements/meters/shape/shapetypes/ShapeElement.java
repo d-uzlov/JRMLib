@@ -1,8 +1,10 @@
 package rxtd.rainmeter.elements.meters.shape.shapetypes;
 
+import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.Modifier;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @see <a href="https://docs.rainmeter.net/manual/meters/shape/">Rainmeter documentation</a>
@@ -10,7 +12,8 @@ import java.util.Map;
 public interface ShapeElement<T extends ShapeElement<T>> {
     String asString(Map<ShapeElement, String> shapes);
 
-    Map<Class, Modifier> getModifiers();
+    @Nullable
+    Set<ExternalDescription> getExternalDescriptions();
 
     T addModifier(Modifier modifier);
 }

@@ -1,5 +1,6 @@
 package rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers;
 
+import org.jetbrains.annotations.Nullable;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.ExternalDescription;
 
 import java.util.Set;
@@ -12,7 +13,7 @@ public abstract class ModifierBase implements Modifier {
     }
 
     @Override
-    public Set<ExternalDescription> getExternalDescriptions() {
+    public @Nullable Set<ExternalDescription> getExternalDescriptions() {
         return null;
     }
 

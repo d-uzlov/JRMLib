@@ -37,7 +37,7 @@ public class ExternalPluginResource implements PluginResource {
         this.isLocal = isLocal;
         this.type = Paths.get("plugin", this.isLocal ? "local" : "external");
         if (this.isLocal) {
-            this.usage = Variables.Skin.RESOURCES_FOLDER.getUsage() + "Plugins/" + pluginName + "/" + (version == null ? "" : version);
+            this.usage = Variables.Skin.RESOURCES_FOLDER.getUsage() + "Plugins/" + pluginName + (version == null ? "" : ("/" + version));
         } else {
             //TODO wtf
             this.usage = pluginName;

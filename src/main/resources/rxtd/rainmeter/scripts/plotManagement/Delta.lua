@@ -17,7 +17,7 @@
 --- Bangs: { name and args }
 ---   Reset()
 ---     Sets all remembered values to current value
----     so that if none changes happen then dalta is 0.
+---     so that if none changes happen then delta is 0.
 ---
 ---
 --- Reset() is called on script load  so that all values are set to 0.

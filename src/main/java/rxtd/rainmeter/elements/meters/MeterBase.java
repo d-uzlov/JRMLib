@@ -227,7 +227,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
 
     @Override
     public T setToolTipHidden(Boolean value) {
-        this.manageParameter("AntiAlias", value);
+        this.manageParameter("ToolTipHidden", value);
         return this.getThis();
     }
 
@@ -342,7 +342,7 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
     }
 
     /**
-     * Class that is used to automatically make text values
+     * Class that is used to automatically link measure values with text
      */
     public static class TextBuilder {
         private final Map<Measure, Integer> map = new HashMap<>();
@@ -358,9 +358,20 @@ public abstract class MeterBase<T extends MeterBase<T>> extends MeterMeasureBase
         }
 
         /**
-         * Append plaint string value.
+         * Equivalent to {@code append(string, true)}.
+         * @see #append(String, boolean)
          */
         public TextBuilder append(String string) {
+            return this.append(string, true);
+        }
+
+        /**
+         * Append plain text value, replaces % with %% if {@code replacePercent} is {@code true}.
+         */
+        public TextBuilder append(String string, boolean replacePercent) {
+            if (replacePercent) {
+                string = string.replace("%", "%%");
+            }
             this.sb.append(string);
             return this;
         }

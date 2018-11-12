@@ -1,9 +1,8 @@
 package rxtd.rainmeter.elements.meters.shape;
 
 import rxtd.rainmeter.elements.meters.MeterBase;
-import rxtd.rainmeter.elements.meters.shape.shapetypes.ShapeElement;
-import rxtd.rainmeter.elements.meters.shape.shapetypes.modifiers.Modifier;
 import rxtd.rainmeter.elements.meters.shape.shapetypes.ExternalDescription;
+import rxtd.rainmeter.elements.meters.shape.shapetypes.ShapeElement;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,29 +52,23 @@ public class Shape extends MeterBase<Shape> {
         String shapeImage = shape.asString(this.shapeMap);
         this.manageParameter(shapeID, shapeImage);
 
-        Map<Class, Modifier> modifiers = shape.getModifiers();
-        if (modifiers == null) {
+        var descriptions = shape.getExternalDescriptions();
+        if (descriptions == null) {
             return this.getThis();
         }
-        for (var modifier : modifiers.entrySet()) {
-            var descriptions = modifier.getValue().getExternalDescriptions();
-            if (descriptions == null) {
+        for (var desc : descriptions) {
+            if (desc == null) {
                 continue;
             }
-            for (var desc : descriptions) {
-                if (desc == null) {
-                    continue;
+            this.descriptions.compute(desc.getName(), (key, description) -> {
+                if (description == null) {
+                    return desc;
                 }
-                this.descriptions.compute(desc.getName(), (key, description) -> {
-                    if (description == null) {
-                        return desc;
-                    }
-                    if (description.equals(desc)) {
-                        throw new IllegalArgumentException("Two different descriptions have same name: " + desc.getName());
-                    }
-                    return description;
-                });
-            }
+                if (description.equals(desc)) {
+                    throw new IllegalArgumentException("Two different descriptions have same name: " + desc.getName());
+                }
+                return description;
+            });
         }
 
         return this.getThis();
