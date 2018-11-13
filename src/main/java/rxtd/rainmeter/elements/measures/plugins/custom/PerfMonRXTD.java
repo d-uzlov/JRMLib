@@ -1,10 +1,11 @@
 package rxtd.rainmeter.elements.measures.plugins.custom;
 
 import org.jetbrains.annotations.Nullable;
+import rxtd.rainmeter.SkinUtils;
 import rxtd.rainmeter.actions.Action;
+import rxtd.rainmeter.elements.measures.plugins.ExternalPluginResource;
 import rxtd.rainmeter.elements.measures.plugins.PluginBase;
 import rxtd.rainmeter.elements.measures.plugins.PluginResource;
-import rxtd.rainmeter.elements.measures.plugins.VirtualPluginResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,17 +14,26 @@ import java.util.List;
 
 /**
  * Replaces PerfMon, NomFerp and UsageMonitor plugins.<br/>
- * Covered version is 1.2.0
+ * Covered version is 1.2.0<br/>
+ * Supports {@link PluginBase#wrap(PluginResource) autowrap}.
  *
  * @see <a href="https://forum.rainmeter.net/viewtopic.php?f=18&t=29226&p=152316">Post on Rainmeter forum</a>
  */
 public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
-    private final static PluginResource PLUGIN = new VirtualPluginResource("PerfMonRxtd", null);
+    private final static PluginResource LOCAL = ExternalPluginResource.fromJar("PerfMonRXTD", "v1.2.1", true);
+    private static Boolean autowrap = null;
     private final List<Child> children = new ArrayList<>();
 
     public PerfMonRXTD(String name) {
-        super(name, PLUGIN);
+        super(name, virtualize(LOCAL));
         this.manageParameter("Type", "Parent");
+        if ((autowrap != null ? autowrap : SkinUtils.getDefaultAutowrap())) {
+            this.wrap(LOCAL);
+        }
+    }
+
+    public static void setAutowrap(Boolean autowrap) {
+        PerfMonRXTD.autowrap = autowrap;
     }
 
     @Override
@@ -37,6 +47,10 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
             c.wrap(plugin);
         }
         return super.wrap(plugin);
+    }
+
+    public Child createChild(String name) {
+        return this.new Child(name);
     }
 
     public PerfMonRXTD setCategory(String category) {
@@ -186,10 +200,6 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
         return super.bangCommand("SetIndexOffset " + value);
     }
 
-    public Child createChild(String name) {
-        return this.new Child(name);
-    }
-
     public enum SortBy {
         NONE("None"),
         INSTANCE_NAME("InstanceName"),
@@ -305,7 +315,7 @@ public class PerfMonRXTD extends PluginBase<PerfMonRXTD> {
     public class Child extends PluginBase<Child> {
 
         private Child(String name) {
-            super(name, PLUGIN);
+            super(name, virtualize(LOCAL));
             this.setParent(PerfMonRXTD.this.getName());
             PerfMonRXTD.this.children.add(this);
             this.wrap(PerfMonRXTD.this.getPluginProvider().get());

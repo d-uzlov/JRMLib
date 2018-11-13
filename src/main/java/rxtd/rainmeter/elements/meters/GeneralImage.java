@@ -46,6 +46,7 @@ public abstract class GeneralImage<T extends GeneralImage<T>> extends MeterBase<
     }
 
     public T setImage(Resource image) {
+        // TODO this does not work (tested on Image)
         this.manageParameter("ImagePath", image);
         return this.getThis();
     }

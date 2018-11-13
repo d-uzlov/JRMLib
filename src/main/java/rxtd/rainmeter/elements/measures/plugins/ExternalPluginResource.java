@@ -44,27 +44,37 @@ public class ExternalPluginResource implements PluginResource {
         }
     }
 
-    private static void writePlugin(@NotNull Path path, @Nullable StreamProvider streamProvider, @NotNull ResourceOptions options) throws IOException {
+    private static void writePlugin(@NotNull Path path, @Nullable StreamProvider streamProvider) throws IOException {
         if (streamProvider == null) {
             return;
         }
-        if (!Files.exists(path)) {
-            Files.createDirectories(path.getParent());
-        } else if (!options.overrideFiles) {
+        if (Files.exists(path)) {
             return;
         }
+        Files.createDirectories(path.getParent());
 
         OutputStream stream = Files.newOutputStream(path);
         streamProvider.getStream().transferTo(stream);
         stream.close();
     }
 
-    public static ExternalPluginResource fromJar(String internalPath, String pluginName, String version, boolean isLocal) {
-        return new ExternalPluginResource(pluginName, version, () -> PluginBase.class.getResourceAsStream(internalPath + "/32-bit.dll"), () -> PluginBase.class.getResourceAsStream(internalPath + "/64-bit.dll"), isLocal);
+    public static ExternalPluginResource fromJar(@NotNull String pluginName, @Nullable String version, boolean isLocal) {
+        String versionPath = "/rxtd/rainmeter/plugins/" + pluginName + (version == null ? "" : "/" + version);
+        return new ExternalPluginResource(
+                pluginName,
+                version,
+                () -> PluginBase.class.getResourceAsStream(versionPath + "/32-bit.dll"),
+                () -> PluginBase.class.getResourceAsStream(versionPath + "/64-bit.dll"),
+                isLocal);
     }
 
     public boolean isLocal() {
         return this.isLocal;
+    }
+
+    @Override
+    public String getName() {
+        return this.pluginName;
     }
 
     @Override
@@ -115,11 +125,11 @@ public class ExternalPluginResource implements PluginResource {
         Path p32;
         Path p64;
         if (this.isLocal) {
-            p32 = path.resolve("32-bit/" + this.pluginName + ".dll");
-            p64 = path.resolve("64-bit/" + this.pluginName + ".dll");
-        } else {
             p32 = path.resolve("32-bit.dll");
             p64 = path.resolve("64-bit.dll");
+        } else {
+            p32 = path.resolve("32-bit/" + this.pluginName + ".dll");
+            p64 = path.resolve("64-bit/" + this.pluginName + ".dll");
         }
 
         List<Path> paths = new ArrayList<>();
@@ -135,8 +145,8 @@ public class ExternalPluginResource implements PluginResource {
 
     @Override
     public void patch(Path configResources, Path suiteResources, @NotNull ResourceOptions options) throws IOException {
-        writePlugin(this.getPaths(configResources, suiteResources).get(0), this.dll32, options);
-        writePlugin(this.getPaths(configResources, suiteResources).get(1), this.dll64, options);
+        writePlugin(this.getPaths(configResources, suiteResources).get(0), this.dll32);
+        writePlugin(this.getPaths(configResources, suiteResources).get(1), this.dll64);
     }
 
     @Override

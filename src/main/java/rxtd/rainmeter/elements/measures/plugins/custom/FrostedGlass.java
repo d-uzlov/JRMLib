@@ -1,27 +1,33 @@
 package rxtd.rainmeter.elements.measures.plugins.custom;
 
+import rxtd.rainmeter.SkinUtils;
+import rxtd.rainmeter.elements.measures.plugins.ExternalPluginResource;
 import rxtd.rainmeter.elements.measures.plugins.PluginBase;
 import rxtd.rainmeter.elements.measures.plugins.PluginResource;
-import rxtd.rainmeter.elements.measures.plugins.VirtualPluginResource;
 
 import java.util.Arrays;
 import java.util.Collection;
 
 /**
  * Blurs background of a meter. Needed in Win10 because it does not have Aero.<br/>
- * Covered version is 1.1.2.
+ * Covered version is 1.1.2.<br/>
+ * Supports {@link PluginBase#wrap(PluginResource) autowrap}.
  *
  * @see <a href="https://forum.rainmeter.net/viewtopic.php?f=18&t=23106">Post on Rainmeter forum</a>
  */
 public class FrostedGlass extends PluginBase<FrostedGlass> {
-    private final static PluginResource PLUGIN = new VirtualPluginResource("FrostedGlass", null);
+    private final static PluginResource LOCAL = ExternalPluginResource.fromJar("FrostedGlass", "v1.1.2", true);
+    private static Boolean autowrap = null;
 
     public FrostedGlass(String name) {
-        super(name, PLUGIN);
+        super(name, virtualize(LOCAL));
+        if ((autowrap != null ? autowrap : SkinUtils.getDefaultAutowrap())) {
+            this.wrap(LOCAL);
+        }
     }
 
-    public FrostedGlass() {
-        this(null);
+    public static void setAutowrap(Boolean autowrap) {
+        FrostedGlass.autowrap = autowrap;
     }
 
     @Override
@@ -88,5 +94,4 @@ public class FrostedGlass extends PluginBase<FrostedGlass> {
             return this.value;
         }
     }
-
 }

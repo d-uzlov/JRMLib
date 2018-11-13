@@ -14,6 +14,8 @@ public class SkinUtils {
     private final static ThreadLocal<NamePrefixProvider> namePrefixProvider = new ThreadLocal<>();
     private final static ThreadLocal<Supplier<NamePrefixProvider>> namePrefixProviderFactory = new ThreadLocal<>();
 
+    private static boolean defaultAutowrap = false;
+
     static {
         namePrefixProviderFactory.set(UniqueNamePrefixProvider::new);
         nextNamePrefixProvider();
@@ -34,6 +36,14 @@ public class SkinUtils {
 
     public static void setNamePrefixProvider(NamePrefixProvider namePrefixProvider) {
         SkinUtils.namePrefixProvider.set(namePrefixProvider);
+    }
+
+    public static boolean getDefaultAutowrap() {
+        return defaultAutowrap;
+    }
+
+    public static void setDefaultAutowrap(boolean defaultAutowrap) {
+        SkinUtils.defaultAutowrap = defaultAutowrap;
     }
 
     public static Charset getStandardCharset() {

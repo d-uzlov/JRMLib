@@ -1,9 +1,10 @@
 package rxtd.rainmeter.elements.measures.plugins.custom;
 
 import org.jetbrains.annotations.Nullable;
+import rxtd.rainmeter.SkinUtils;
+import rxtd.rainmeter.elements.measures.plugins.ExternalPluginResource;
 import rxtd.rainmeter.elements.measures.plugins.PluginBase;
 import rxtd.rainmeter.elements.measures.plugins.PluginResource;
-import rxtd.rainmeter.elements.measures.plugins.VirtualPluginResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,17 +13,26 @@ import java.util.List;
 
 /**
  * Replaces PerfMon, NomFerp and UsageMonitor plugins.<br/>
- * Covered version is 2.0.1.3
+ * Covered version is 2.0.1.3<br/>
+ * Supports {@link PluginBase#wrap(PluginResource) autowrap}.
  *
  * @see <a href="https://forum.rainmeter.net/viewtopic.php?f=18&t=28937">Post on Rainmeter forum</a>
  */
 public class PerfMonPDH extends PluginBase<PerfMonPDH> {
-    private final static PluginResource PLUGIN = new VirtualPluginResource("PerfMonPDH", null);
+    private final static PluginResource LOCAL = ExternalPluginResource.fromJar("PerfMonPDH", "v2.0.1.3", true);
+    private static Boolean autowrap = null;
     private final List<Child> children = new ArrayList<>();
 
     public PerfMonPDH(String name) {
-        super(name, PLUGIN);
+        super(name, virtualize(LOCAL));
         this.manageParameter("Type", "Parent");
+        if ((autowrap != null ? autowrap : SkinUtils.getDefaultAutowrap())) {
+            this.wrap(LOCAL);
+        }
+    }
+
+    public static void setAutowrap(Boolean autowrap) {
+        PerfMonPDH.autowrap = autowrap;
     }
 
     @Override
@@ -36,6 +46,10 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
             c.wrap(plugin);
         }
         return super.wrap(plugin);
+    }
+
+    public Child createChild(String name) {
+        return this.new Child(name);
     }
 
     public PerfMonPDH setCategory(String category) {
@@ -112,10 +126,6 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
     public PerfMonPDH setSortRollupFunction(RollupFunction value) {
         this.manageParameter("SortRollupFunction", value);
         return this.getThis();
-    }
-
-    public Child createChild(String name) {
-        return this.new Child(name);
     }
 
     public enum SortBy {
@@ -234,7 +244,7 @@ public class PerfMonPDH extends PluginBase<PerfMonPDH> {
     public class Child extends PluginBase<Child> {
 
         private Child(String name) {
-            super(name, PLUGIN);
+            super(name, virtualize(LOCAL));
             this.setParent(PerfMonPDH.this.getName());
             PerfMonPDH.this.children.add(this);
             this.wrap(PerfMonPDH.this.getPluginProvider().get());

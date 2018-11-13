@@ -10,10 +10,16 @@ import java.util.Objects;
 public class VirtualResource implements Resource {
     private final String usage;
     private final Path type;
+    private final boolean automanaged;
 
     public VirtualResource(String usage, Path type) {
+        this(usage, type, false);
+    }
+
+    public VirtualResource(String usage, Path type, boolean automanaged) {
         this.usage = usage;
         this.type = type;
+        this.automanaged = automanaged;
     }
 
     @Override
@@ -33,7 +39,7 @@ public class VirtualResource implements Resource {
 
     @Override
     public boolean isAutoManaged() {
-        return false;
+        return this.automanaged;
     }
 
     @Override

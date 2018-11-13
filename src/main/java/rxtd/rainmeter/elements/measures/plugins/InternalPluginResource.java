@@ -19,6 +19,11 @@ class InternalPluginResource implements PluginResource {
     }
 
     @Override
+    public String getName() {
+        return this.pluginName;
+    }
+
+    @Override
     public String getVersion() {
         return null;
     }

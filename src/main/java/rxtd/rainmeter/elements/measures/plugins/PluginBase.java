@@ -15,7 +15,7 @@ import java.util.function.Supplier;
  * @param <T>
  */
 public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T> {
-    private final static PluginResource LOCAL_WRAP_PLUGIN = ExternalPluginResource.fromJar("/rxtd/rainmeter/plugins/LocalPluginLoader", "LocalPluginLoader", null, false);
+    private final static PluginResource LOCAL_WRAP_PLUGIN = ExternalPluginResource.fromJar("LocalPluginLoader", null, false);
     private PluginResource wrappedPlugin = null;
     private boolean sectionVariablesExist = false;
 
@@ -35,30 +35,26 @@ public abstract class PluginBase<T extends PluginBase<T>> extends MeasureBase<T>
         });
     }
 
+    protected static VirtualPluginResource virtualize(PluginResource plugin) {
+        return new VirtualPluginResource(plugin.getName(), plugin.getVersion());
+    }
+
     /**
-     * In rainmeter all plugins are global and should be in global Plugins directory.
-     * <br/>
-     * I think it's inconvenient. There are times when you don't want plugin to be global.
-     * <br/>
-     * This function replaces plugin link to a local one, which is specified by {@code pluginPath}.
-     * <br/><br/>
-     * This method is simple wrap over {@link #wrap(PluginResource)} so it can't be overridden.
+     * This method is a simple wrap over {@link #wrap(PluginResource)}.
      *
      * @param pluginPath Path to a folder with two files: {@code 64-bit.dll} and {@code 32-bit.dll}, relative to Resources folder
      * @see #wrap(PluginResource)
      */
-    public final T wrap(@Nullable String pluginPath, boolean absolutePath) {
-        return this.wrap(new VirtualPluginResource((absolutePath ? "" : Variables.Skin.RESOURCES_FOLDER.getUsage()) + pluginPath, null));
+    public final T wrap(@Nullable String pluginPath) {
+        return this.wrap(new VirtualPluginResource(Variables.Skin.RESOURCES_FOLDER.getUsage() + pluginPath, null));
     }
 
     /**
      * In rainmeter all plugins are global and should be in global Plugins directory.
      * <br/>
-     * I think it's inconvenient. There are times when you don't want plugin to be global.
+     * It can be inconvenient. There are times when you don't want plugin to be global.
      * <br/>
-     * This function replaces plugin link to a local one, which is specified by {@code pluginPath}.
-     *
-     * @throws IllegalArgumentException if {@code plugin} is not local.
+     * This function replaces plugin link to a local one, which is represented as PluginResource {@code plugin}.
      */
     public T wrap(@Nullable PluginResource plugin) {
         if (this.sectionVariablesExist && this.wrappedPlugin != plugin) {
