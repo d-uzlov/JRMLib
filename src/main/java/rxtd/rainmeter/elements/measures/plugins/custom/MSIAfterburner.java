@@ -1,30 +1,21 @@
 package rxtd.rainmeter.elements.measures.plugins.custom;
 
-import rxtd.rainmeter.SkinUtils;
-import rxtd.rainmeter.elements.measures.plugins.ExternalPluginResource;
 import rxtd.rainmeter.elements.measures.plugins.PluginBase;
 import rxtd.rainmeter.elements.measures.plugins.PluginResource;
+import rxtd.rainmeter.elements.measures.plugins.VirtualPluginResource;
 
 /**
  * A plug-in that allows you to put MSI Afterburner hardware monitoring information into the Rainmeter.<br/>
- * Cpvered version is 2.0<br/>
- * Supports {@link PluginBase#wrap(PluginResource) autowrap}.
+ * Covered version is 2.0<br/>
+ * Old dlls (versions 2.0 and prior) does not support wrapping in any form. At least until LocalPluginLoader is updated to support old plugin API.
  *
  * @see <a href="https://forums.guru3d.com/threads/rainmeter-plugin-for-msi-afterburner.319558/page-2#post-3806691">Documentation in original post on forum</a>
  */
 public class MSIAfterburner extends PluginBase<MSIAfterburner> {
-    private final static PluginResource LOCAL = ExternalPluginResource.fromJar("MSIAfterburner", "v2.0", true);
-    private static Boolean autowrap = null;
+    private final static PluginResource PLUGIN = new VirtualPluginResource("MSIAfterburner", null);
 
     public MSIAfterburner(String name) {
-        super(name, virtualize(LOCAL));
-        if ((autowrap != null ? autowrap : SkinUtils.getDefaultAutowrap())) {
-            this.wrap(LOCAL);
-        }
-    }
-
-    public static void setAutowrap(Boolean autowrap) {
-        MSIAfterburner.autowrap = autowrap;
+        super(name, PLUGIN);
     }
 
     @Override

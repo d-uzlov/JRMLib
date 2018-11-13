@@ -264,11 +264,17 @@ public class AudioLevel2 extends PluginBase<AudioLevel2> {
         }
 
         public Child setChannel(Channel value) {
+            if (value == Channel.FRONT_AVERAGE && Type.WAVEFORM.toString().equals(this.getParams().get("Type"))) {
+                throw new RuntimeException("unsupported due to bug in plugin");
+            }
             this.manageParameter("Channel", value);
             return this.getThis();
         }
 
         public Child setType(Type value) {
+            if (value == Type.WAVEFORM && Channel.FRONT_AVERAGE.toString().equals(this.getParams().get("Channel"))) {
+                throw new RuntimeException("unsupported due to bug in plugin");
+            }
             this.manageParameter("Type", value);
             return this.getThis();
         }
